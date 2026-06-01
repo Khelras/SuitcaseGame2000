@@ -1,3 +1,43 @@
 [gd_scene format=3 uid="uid://barcu3dmues72"]
 
+[ext_resource type="Script" uid="uid://c6c2tebfw20hi" path="res://Scripts/Followmouse.cs" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://sclddugjp47g" path="res://scenes/scr_cursor.cs" id="2_yqjtg"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_yqjtg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lnu2h"]
+radius = 1.0063707
+
+[sub_resource type="SphereMesh" id="SphereMesh_lbhrr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yqjtg"]
+radius = 0.5025159
+
 [node name="Game" type="Node2D" unique_id=1111423664]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=237425463]
+modulate = Color(0.044745557, 0, 0.9565725, 1)
+position = Vector2(677, 316)
+scale = Vector2(-83.597, 80)
+mesh = SubResource("SphereMesh_yqjtg")
+script = ExtResource("1_uwrxv")
+
+[node name="Area2D" type="Area2D" parent="MeshInstance2D" unique_id=1780254254 groups=["obj"]]
+scale = Vector2(0.99999994, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeshInstance2D/Area2D" unique_id=1609167786]
+scale = Vector2(0.50000006, 0.5)
+shape = SubResource("CircleShape2D_lnu2h")
+
+[node name="Cursor" type="MeshInstance2D" parent="." unique_id=563136816]
+position = Vector2(904.02264, 128.5)
+scale = Vector2(5.961567, 7.0000076)
+mesh = SubResource("SphereMesh_lbhrr")
+script = ExtResource("2_yqjtg")
+
+[node name="Area2D" type="Area2D" parent="Cursor" unique_id=466012866 groups=["cursor"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cursor/Area2D" unique_id=1939689457]
+shape = SubResource("CircleShape2D_yqjtg")
+
+[connection signal="area_entered" from="Cursor/Area2D" to="Cursor" method="_on_area_2d_area_entered"]
