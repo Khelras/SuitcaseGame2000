@@ -7,7 +7,7 @@ using System;
 public partial class Grid : Node2D
 {
     [ExportGroup("Grid Configuration")]
-    [Export] public Vector2 GridPositionOffset { get; set; }
+    [Export] public Vector2 GridPosition { get; set; }
 	[Export] public Vector2I GridSize { get; set; }
 
     [ExportGroup("Grid References")]
@@ -30,7 +30,7 @@ public partial class Grid : Node2D
         }
 
         // Set the Position of the Grid based on the set Grid Position
-        this.GlobalPosition = this.GridPositionOffset;
+        this.GlobalPosition = this.GridPosition;
 
         // Loop to create the Grid based on the set Grid Size
         for (int x = 0; x < this.GridSize.X; x++)
