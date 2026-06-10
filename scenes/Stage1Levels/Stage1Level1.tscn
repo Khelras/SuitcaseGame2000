@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cgux4s7q1u75t"]
+
+[ext_resource type="Script" uid="uid://cku717ckv3cfh" path="res://scripts/StageSelect.cs" id="1_y3i7o"]
+
+[node name="Stage1Level1" type="Control" unique_id=1405033603]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_y3i7o")
+
+[node name="BackButton" type="Button" parent="." unique_id=349386855]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.6723796
+anchor_top = -3.5001392
+anchor_bottom = -3.5001392
+offset_left = 102.0
+offset_top = 550.0
+offset_right = 255.02
+offset_bottom = 589.427
+text = "Back
+"
+
+[node name="Label" type="Label" parent="." unique_id=204523640]
+layout_mode = 0
+offset_left = 498.0
+offset_top = 22.0
+offset_right = 699.0
+offset_bottom = 110.0
+theme_override_font_sizes/font_size = 64
+text = "Level 1"
+
+[connection signal="pressed" from="BackButton" to="." method="OnBackPressed"]
