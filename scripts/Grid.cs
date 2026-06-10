@@ -9,7 +9,9 @@ public partial class Grid : Node2D
     [ExportGroup("Grid Configuration")]
     [Export] public Vector2 GridPositionOffset { get; set; }
 	[Export] public Vector2I GridSize { get; set; }
-	[Export] public TileMapLayer GridMap { get; set; }
+
+    [ExportGroup("Grid References")]
+    [Export] public TileMapLayer GridMap { get; set; }
 
 
     // Called when the node enters the scene tree for the first time.
