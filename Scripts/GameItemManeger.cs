@@ -18,6 +18,9 @@ public partial class GameItemManeger : Node
         string path = "res://scenes/Items.tscn";
 
         scene = GD.Load<PackedScene>(path); // Loading the entire scene
+        //Instance the scene
+       
+
         swapbutton = GetNode<Button>("Button");
         swapbutton.Pressed += OnSwapButtonPressed;
         
@@ -31,14 +34,14 @@ public partial class GameItemManeger : Node
     }
    
     private void OnSwapButtonPressed() {
-
+      if (items == null) return;
         currentItem = (currentItem + 1) % items.orderSprites.Count;
-        DeleteNode();
+        
         items.SetType(currentItem);
 
     }
 	private void SpawnNode(Vector2 position, int index) {
-        if (IsInstanceValid(items)) return;
+       if (items != null) return; // dont spawn if item does't exist
         // create a copy of the scene
         items = scene.Instantiate<Items>(); 
 
@@ -55,14 +58,7 @@ public partial class GameItemManeger : Node
         if (IsInstanceValid(items))
             items.SetType(index);
     }
-	private void DeleteNode() {
-        if (IsInstanceValid(items)) {
-            items.QueueFree();
-            items = null;
-        }
-        
-        
-    }
+
   
 	
 }

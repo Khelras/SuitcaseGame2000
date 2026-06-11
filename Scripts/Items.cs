@@ -12,8 +12,7 @@ public partial class Items : Node2D
     private int CurrentIndex;
     public override void _Ready()
     {
-        // this gets the ket which is the enum and the value which retrive the Sprite2D from the scene
-
+        //Gets the sprites into index order 
         orderSprites = new List<Sprite2D>();
         orderSprites.Add(GetNode<Sprite2D>("Box"));
         orderSprites.Add(GetNode<Sprite2D>("Circle"));
@@ -29,7 +28,7 @@ public partial class Items : Node2D
         {
             sprite.Visible = false;
         }
-        //looks in the dictionary which enum value and set it to Visible
+        //looks in the which Index to be visble
         orderSprites[index].Visible = true; 
        
 
