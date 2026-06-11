@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://cg3lilf464844"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_w5c1n"]
-
-[node name="MeshInstance2D" type="MeshInstance2D" unique_id=1728462713]
-position = Vector2(1022, 524.00006)
-scale = Vector2(113.499916, 100.99996)
-mesh = SubResource("BoxMesh_w5c1n")

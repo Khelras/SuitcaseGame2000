@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://srmjpnnh44yi"]
+
+[ext_resource type="Script" uid="uid://83ykjus4ov0s" path="res://scripts/Items.cs" id="1_itnmx"]
+[ext_resource type="Texture2D" uid="uid://djr6pgsgpw88o" path="res://assessts/RTS_Crate.png" id="1_uwk64"]
+[ext_resource type="Texture2D" uid="uid://bjdcolxsjtsrx" path="res://assessts/Untitled.png" id="2_7kw4u"]
+[ext_resource type="Texture2D" uid="uid://bjm36ksckyobt" path="res://assessts/artworks-r6seSP84nT6z4DJx-iG01PA-t1080x1080.jpg" id="4_fd15g"]
+[ext_resource type="Texture2D" uid="uid://cvuadnyv0vawt" path="res://assessts/Banana.png" id="5_45gv6"]
+
+[node name="Items" type="Node2D" unique_id=485295319]
+script = ExtResource("1_itnmx")
+
+[node name="Box" type="Sprite2D" parent="." unique_id=1914670310]
+scale = Vector2(0.19531251, 0.19921874)
+texture = ExtResource("1_uwk64")
+
+[node name="Circle" type="Sprite2D" parent="." unique_id=919571869]
+scale = Vector2(0.44335938, 0.3847656)
+texture = ExtResource("2_7kw4u")
+
+[node name="Cat" type="Sprite2D" parent="." unique_id=1704969134]
+position = Vector2(0.75000054, -3.0000024)
+scale = Vector2(0.10416667, 0.096296296)
+texture = ExtResource("4_fd15g")
+
+[node name="Banana" type="Sprite2D" parent="." unique_id=524344653]
+visible = false
+position = Vector2(0, -7.6293945e-06)
+scale = Vector2(0.4377432, 0.40625)
+texture = ExtResource("5_45gv6")
