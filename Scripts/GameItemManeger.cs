@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using System.Net.Quic;
 using static Items;
 
@@ -8,7 +9,9 @@ public partial class GameItemManeger : Node
 	private PackedScene scene;
     private Items items;
     private Button swapbutton;
-    private Items.SetItems currentItem = Items.SetItems.Box;
+   
+    private int currentItem;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -26,30 +29,15 @@ public partial class GameItemManeger : Node
 	{
         SpawnNode(new Vector2(1055.0f, 573.0f), currentItem); // Spawns the sprite
     }
+   
     private void OnSwapButtonPressed() {
 
-        if (currentItem == Items.SetItems.Box)
-        {
-            currentItem = Items.SetItems.Circle;
-
-            DeleteNode();
-        }
-        else if(currentItem == Items.SetItems.Circle)
-        {
-            currentItem = Items.SetItems.Cat;
-
-            DeleteNode();
-        }
-        else if(currentItem == Items.SetItems.Cat)
-        {
-           currentItem = Items.SetItems.Box;
-
-            DeleteNode();
-        }
-
+        currentItem = (currentItem + 1) % items.orderSprites.Count;
+        DeleteNode();
+        items.SetType(currentItem);
 
     }
-	private void SpawnNode(Vector2 position, Items.SetItems type) {
+	private void SpawnNode(Vector2 position, int index) {
         if (IsInstanceValid(items)) return;
         // create a copy of the scene
         items = scene.Instantiate<Items>(); 
@@ -61,11 +49,11 @@ public partial class GameItemManeger : Node
         CallDeferred("add_child", items);
 
         // delay on which sprite to spawn
-        CallDeferred(nameof(SetItemType), (int)type); 
+        CallDeferred(nameof(SetItemType), index); 
     }
-    private void SetItemType(Items.SetItems type) {
+    private void SetItemType(int index) {
         if (IsInstanceValid(items))
-            items.SetType(type);
+            items.SetType(index);
     }
 	private void DeleteNode() {
         if (IsInstanceValid(items)) {

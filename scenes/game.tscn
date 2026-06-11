@@ -10,6 +10,7 @@ font_size = 50
 [node name="Game" type="Node2D" unique_id=1111423664]
 
 [node name="Timer" type="Timer" parent="." unique_id=741199959]
+wait_time = 3.0
 autostart = true
 script = ExtResource("1_uwrxv")
 

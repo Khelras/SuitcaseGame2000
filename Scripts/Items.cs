@@ -5,30 +5,32 @@ using System.Collections.Generic;
 public partial class Items : Node2D
 {
   
-    private Dictionary<SetItems, Sprite2D> sprites;
-    public enum SetItems {Box, Circle, Cat,  }
+   
+   
+
+    public List<Sprite2D> orderSprites;
+    private int CurrentIndex;
     public override void _Ready()
     {
-        sprites = new Dictionary<SetItems, Sprite2D>
-        {
-            {SetItems.Box, GetNode<Sprite2D>("Box") },
-            {SetItems.Circle, GetNode<Sprite2D>("Circle") },
-            {SetItems.Cat, GetNode<Sprite2D>("Cat") },
-        };
-        foreach (Sprite2D sprite in sprites.Values) { 
-            sprite.Visible = false;
-        }
+        // this gets the ket which is the enum and the value which retrive the Sprite2D from the scene
+
+        orderSprites = new List<Sprite2D>();
+        orderSprites.Add(GetNode<Sprite2D>("Box"));
+        orderSprites.Add(GetNode<Sprite2D>("Circle"));
+        orderSprites.Add(GetNode<Sprite2D>("Cat"));
+
+      
    
     }
   
-    public void SetType(SetItems type) {
+    public void SetType(int index) {
         //make all sprites not visible
-        foreach (Sprite2D sprite in sprites.Values)
+        foreach (Sprite2D sprite in orderSprites)
         {
             sprite.Visible = false;
         }
-        // 
-        sprites[type].Visible = true; 
+        //looks in the dictionary which enum value and set it to Visible
+        orderSprites[index].Visible = true; 
        
 
     }
