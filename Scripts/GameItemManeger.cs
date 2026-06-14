@@ -9,9 +9,12 @@ public partial class GameItemManeger : Node
 	private PackedScene scene;
     private Items items;
     private Button swapbutton;
-   
-    private int currentItem;
+    private DragAndDrop dragAndDrop;
+    private Area2D area;
 
+    private int currentItem;
+    private bool itemSpawned = false;
+    
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -20,43 +23,45 @@ public partial class GameItemManeger : Node
         scene = GD.Load<PackedScene>(path); // Loading the entire scene
         //Instance the scene
        
-
+        area = GetNode<Area2D>("Area2D");
         swapbutton = GetNode<Button>("Button");
         swapbutton.Pressed += OnSwapButtonPressed;
-        
-        
+        area.AreaExited += OnAreaExited;
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
-	{
-        SpawnNode(new Vector2(1055.0f, 573.0f), currentItem); // Spawns the sprite
+    {   // only spawn once
+        if (!itemSpawned) {
+
+            SpawnNode(currentItem); // Spawns the sprite
+            itemSpawned = true;
+        } 
+        
     }
-   
+    private void OnAreaExited(Area2D area) {
+        GD.Print("Exit");
+        items.RemoveItem(currentItem);
+    }
     private void OnSwapButtonPressed() {
       if (items == null) return;
         currentItem = (currentItem + 1) % items.orderSprites.Count;
         
-        items.SetType(currentItem);
+        items.SetItem(currentItem);
 
     }
-	private void SpawnNode(Vector2 position, int index) {
+	private void SpawnNode(int index) {
        if (items != null) return; // dont spawn if item does't exist
         // create a copy of the scene
-        items = scene.Instantiate<Items>(); 
+        items = scene.Instantiate<Items>();
 
-        //Change the Position
-        items.Position = position;
+        AddChild(items);
 
-        // delay before the sprite spawn
-        CallDeferred("add_child", items);
-
-        // delay on which sprite to spawn
-        CallDeferred(nameof(SetItemType), index); 
+        items.SetItem(index);
     }
     private void SetItemType(int index) {
         if (IsInstanceValid(items))
-            items.SetType(index);
+            items.SetItem(index);
     }
 
   

@@ -4,10 +4,12 @@ using System;
 public partial class TimerTimeoutSignal : Timer
 {
 	private int TotalTimeInSec = 0;
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		//GetNode<Timer>("Timer").Start();
+		
+        //GetNode<Timer>("Timer").Start();
         Timeout += OnTimerTimeoutSignal;
     }
 
@@ -24,4 +26,5 @@ public partial class TimerTimeoutSignal : Timer
 		GD.Print("Time out");
 		
 	}
+	
 }

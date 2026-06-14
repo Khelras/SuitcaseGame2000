@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjm36ksckyobt"
-path="res://.godot/imported/artworks-r6seSP84nT6z4DJx-iG01PA-t1080x1080.jpg-6354f44a5106c8ccb7e02e6558ba05c7.ctex"
+uid="uid://cvuadnyv0vawt"
+path="res://.godot/imported/Banana.png-13085dce9ef008a90203a739ebe10d2c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assessts/artworks-r6seSP84nT6z4DJx-iG01PA-t1080x1080.jpg"
-dest_files=["res://.godot/imported/artworks-r6seSP84nT6z4DJx-iG01PA-t1080x1080.jpg-6354f44a5106c8ccb7e02e6558ba05c7.ctex"]
+source_file="res://assets/Banana.png"
+dest_files=["res://.godot/imported/Banana.png-13085dce9ef008a90203a739ebe10d2c.ctex"]
 
 [params]
 

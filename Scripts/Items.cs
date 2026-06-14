@@ -22,7 +22,7 @@ public partial class Items : Node2D
    
     }
   
-    public void SetType(int index) {
+    public void SetItem(int index) {
         //make all sprites not visible
         foreach (Sprite2D sprite in orderSprites)
         {
@@ -32,5 +32,14 @@ public partial class Items : Node2D
         orderSprites[index].Visible = true; 
        
 
+    }
+    public void RemoveItem(int index) {
+        //check if the index in valid
+        if (index >= 0 && index < orderSprites.Count) {
+
+            orderSprites[index].Visible = true;
+
+            orderSprites.RemoveAt(index);
+        }
     }
 }

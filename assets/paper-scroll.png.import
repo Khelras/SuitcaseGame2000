@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjdcolxsjtsrx"
-path="res://.godot/imported/Untitled.png-c316913b73b0a49f45dd8565d0512328.ctex"
+uid="uid://8okqobeqmdoc"
+path="res://.godot/imported/paper-scroll.png-f7a0c89b902924d307b94291f393682a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assessts/Untitled.png"
-dest_files=["res://.godot/imported/Untitled.png-c316913b73b0a49f45dd8565d0512328.ctex"]
+source_file="res://assets/paper-scroll.png"
+dest_files=["res://.godot/imported/paper-scroll.png-f7a0c89b902924d307b94291f393682a.ctex"]
 
 [params]
 
