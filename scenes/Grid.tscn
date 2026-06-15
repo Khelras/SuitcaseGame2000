@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://ckryw7f5iaccw"]
+
+[ext_resource type="Script" uid="uid://dfty4upc62h8s" path="res://scripts/Grid.cs" id="1_8rubn"]
+[ext_resource type="Texture2D" uid="uid://ch76hnd1tlil5" path="res://assets/GridTilePlaceholder.png" id="2_48dov"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t5fjg"]
+texture = ExtResource("2_48dov")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_w88cy"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_t5fjg")
+
+[node name="Grid" type="Node2D" unique_id=446653954 node_paths=PackedStringArray("GridMap")]
+script = ExtResource("1_8rubn")
+GridPosition = Vector2(20, 20)
+GridSize = Vector2i(10, 10)
+GridMap = NodePath("TileMapLayer")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=491214082]
+tile_set = SubResource("TileSet_w88cy")
