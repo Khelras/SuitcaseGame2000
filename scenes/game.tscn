@@ -1,13 +1,9 @@
 [gd_scene format=3 uid="uid://barcu3dmues72"]
 
-[ext_resource type="Script" uid="uid://bqlpfobqhe673" path="res://scripts/TimerTimeoutSignal.cs" id="1_uwrxv"]
-[ext_resource type="Script" uid="uid://ddyhyxfbfx1pm" path="res://scripts/GameItemManeger.cs" id="2_yqjtg"]
-[ext_resource type="Texture2D" uid="uid://djr6pgsgpw88o" path="res://assets/RTS_Crate.png" id="3_lnu2h"]
+[ext_resource type="Script" uid="uid://ddyhyxfbfx1pm" path="res://Scripts/ItemManeger.cs" id="2_s0nni"]
+[ext_resource type="PackedScene" uid="uid://srmjpnnh44yi" path="res://scenes/Items.tscn" id="3_s0nni"]
 [ext_resource type="Texture2D" uid="uid://8okqobeqmdoc" path="res://assets/paper-scroll.png" id="4_iywne"]
-[ext_resource type="Script" uid="uid://khcdvocp51cf" path="res://scripts/DragAndDrop.cs" id="5_p57ef"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_lnu2h"]
-font_size = 50
+[ext_resource type="Script" uid="uid://khcdvocp51cf" path="res://Scripts/DragAndDrop.cs" id="5_p57ef"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p57ef"]
 size = Vector2(94, 90)
@@ -17,28 +13,13 @@ font_size = 29
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iywne"]
-size = Vector2(367.4638, 489.14307)
+size = Vector2(418.529, 504.693)
 
 [node name="Game" type="Node2D" unique_id=1111423664]
 
-[node name="Timer" type="Timer" parent="." unique_id=741199959]
-wait_time = 3.0
-autostart = true
-script = ExtResource("1_uwrxv")
-
-[node name="Label" type="Label" parent="Timer" unique_id=1702957693]
-anchors_preset = -1
-anchor_left = 0.22200002
-anchor_right = 0.22200002
-offset_left = -63.74402
-offset_top = 64.0
-offset_right = 64.25598
-offset_bottom = 133.0
-text = "00:00"
-label_settings = SubResource("LabelSettings_lnu2h")
-
 [node name="ItemManager" type="Node2D" parent="." unique_id=1937314980]
-script = ExtResource("2_yqjtg")
+script = ExtResource("2_s0nni")
+itemsScene = ExtResource("3_s0nni")
 
 [node name="Button" type="Button" parent="ItemManager" unique_id=417803588]
 anchors_preset = -1
@@ -54,12 +35,6 @@ text = "[>"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemManager/Area2D" unique_id=1536218106]
 position = Vector2(1063, 574)
 shape = SubResource("RectangleShape2D_p57ef")
-
-[node name="Dont mind me" type="Sprite2D" parent="." unique_id=1996296849]
-visible = false
-position = Vector2(1055, 573)
-scale = Vector2(0.17675783, 0.1591797)
-texture = ExtResource("3_lnu2h")
 
 [node name="Paper" type="Sprite2D" parent="." unique_id=1700458966]
 position = Vector2(967, 183.00002)

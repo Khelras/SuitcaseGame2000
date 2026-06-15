@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using System.Net.Quic;
 using static Items;
 
-public partial class GameItemManeger : Node
+public partial class ItemManeger : Node
 {
-	private PackedScene scene;
+    // Public Variables set Externally in the Editor
+    [Export] public PackedScene itemsScene;
+
     private Items items;
     private Button swapbutton;
     private DragAndDrop dragAndDrop;
@@ -18,10 +20,17 @@ public partial class GameItemManeger : Node
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        string path = "res://scenes/Items.tscn";
-
-        scene = GD.Load<PackedScene>(path); // Loading the entire scene
-        //Instance the scene
+        // Check if PackedScene Reference is Set
+        if (this.itemsScene == null)
+        {
+            // DEBUG: If the TileMapLayer reference is not set, print a warning to the console
+            GD.PushWarning("itemsScene reference is not set. Please assign it in the inspector.");
+        }
+        else
+        {
+            // DEBUG: Print the name of the TileMapLayer to confirm the reference is set correctly
+            GD.Print("itemsScene reference is set successfully.");
+        }
        
         area = GetNode<Area2D>("Area2D");
         swapbutton = GetNode<Button>("Button");
@@ -44,7 +53,7 @@ public partial class GameItemManeger : Node
         items.RemoveItem(currentItem);
     }
     private void OnSwapButtonPressed() {
-      if (items == null) return;
+      if (items == null || items.orderSprites.Count <= 0) return;
         currentItem = (currentItem + 1) % items.orderSprites.Count;
         
         items.SetItem(currentItem);
@@ -53,7 +62,7 @@ public partial class GameItemManeger : Node
 	private void SpawnNode(int index) {
        if (items != null) return; // dont spawn if item does't exist
         // create a copy of the scene
-        items = scene.Instantiate<Items>();
+        items = itemsScene.Instantiate<Items>();
 
         AddChild(items);
 
