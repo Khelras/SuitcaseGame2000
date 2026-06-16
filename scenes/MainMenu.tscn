@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://dsqrwc1lev07j"]
+
+[ext_resource type="Script" uid="uid://dxra22f3j5kgf" path="res://scripts/MainMenu.cs" id="1_yqorp"]
+
+[node name="MainMenu" type="Control" unique_id=264811829]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_yqorp")
+
+[node name="Label" type="Label" parent="." unique_id=172638012]
+layout_mode = 0
+offset_left = 418.0
+offset_top = 31.0
+offset_right = 767.0
+offset_bottom = 119.0
+theme_override_font_sizes/font_size = 64
+text = "Main Menu"
+
+[node name="Start_Button" type="Button" parent="." unique_id=291161262]
+layout_mode = 0
+offset_left = 474.0
+offset_top = 201.0
+offset_right = 707.0
+offset_bottom = 250.0
+
+[node name="Start_Label" type="Label" parent="Start_Button" unique_id=1403375465]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 1.0
+offset_right = 164.0
+offset_bottom = 49.0
+theme_override_font_sizes/font_size = 32
+text = "Start"
+
+[node name="Quit_Button" type="Button" parent="." unique_id=2024452549]
+layout_mode = 0
+offset_left = 474.0
+offset_top = 286.0
+offset_right = 707.0
+offset_bottom = 335.0
+
+[node name="Quit_Label" type="Label" parent="Quit_Button" unique_id=1746628973]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 1.0
+offset_right = 164.0
+offset_bottom = 49.0
+theme_override_font_sizes/font_size = 32
+text = "Quit
+"
+
+[connection signal="pressed" from="Start_Button" to="." method="OnStartPressed"]
+[connection signal="pressed" from="Quit_Button" to="." method="OnExitPressed"]
