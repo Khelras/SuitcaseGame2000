@@ -1,19 +1,19 @@
 [gd_scene format=3 uid="uid://srmjpnnh44yi"]
 
-[ext_resource type="Script" uid="uid://83ykjus4ov0s" path="res://Scripts/Items.cs" id="1_itnmx"]
+[ext_resource type="Script" uid="uid://83ykjus4ov0s" path="res://scripts/Items.cs" id="1_itnmx"]
 [ext_resource type="Texture2D" uid="uid://djr6pgsgpw88o" path="res://assets/RTS_Crate.png" id="1_uwk64"]
 [ext_resource type="Texture2D" uid="uid://bjdcolxsjtsrx" path="res://assets/Untitled.png" id="2_7kw4u"]
-[ext_resource type="Script" uid="uid://khcdvocp51cf" path="res://Scripts/DragAndDrop.cs" id="3_45gv6"]
+[ext_resource type="Script" uid="uid://khcdvocp51cf" path="res://scripts/DragAndDrop.cs" id="3_45gv6"]
 [ext_resource type="Texture2D" uid="uid://bjm36ksckyobt" path="res://assets/artworks-r6seSP84nT6z4DJx-iG01PA-t1080x1080.jpg" id="4_fd15g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_45gv6"]
-size = Vector2(491.52008, 481.8827)
+size = Vector2(378.8803, 381.49063)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g3pqv"]
-size = Vector2(252.6168, 249.50272)
+size = Vector2(196.22955, 176.73108)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oyx72"]
-size = Vector2(1075.2002, 1080.0007)
+size = Vector2(796.7996, 758.07776)
 
 [node name="Items" type="Node2D" unique_id=485295319]
 script = ExtResource("1_itnmx")
@@ -28,7 +28,6 @@ script = ExtResource("3_45gv6")
 [node name="Area2D" type="Area2D" parent="Box" unique_id=1144737606]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Box/Area2D" unique_id=1229559037]
-position = Vector2(6.1035156e-05, -0.00012207031)
 scale = Vector2(0.9999998, 0.9999992)
 shape = SubResource("RectangleShape2D_45gv6")
 
@@ -41,8 +40,8 @@ script = ExtResource("3_45gv6")
 [node name="Area2D" type="Area2D" parent="Circle" unique_id=1941682073]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Circle/Area2D" unique_id=1456001281]
-position = Vector2(3.0517578e-05, -1.2392926e-06)
-scale = Vector2(0.99999976, 0.9999993)
+position = Vector2(1.1276855, -10.395996)
+scale = Vector2(0.9999997, 0.9999993)
 shape = SubResource("RectangleShape2D_g3pqv")
 
 [node name="Cat" type="Sprite2D" parent="." unique_id=1704969134]
@@ -54,6 +53,6 @@ script = ExtResource("3_45gv6")
 [node name="Area2D" type="Area2D" parent="Cat" unique_id=575405444]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cat/Area2D" unique_id=353141459]
-position = Vector2(0, -41.538506)
-scale = Vector2(1, 0.99999917)
+position = Vector2(-4.7998047, -15.57666)
+scale = Vector2(1, 0.99999905)
 shape = SubResource("RectangleShape2D_oyx72")

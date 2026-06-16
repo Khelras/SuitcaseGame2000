@@ -1,6 +1,21 @@
 [gd_scene format=3 uid="uid://cgux4s7q1u75t"]
 
 [ext_resource type="Script" uid="uid://cku717ckv3cfh" path="res://scripts/StageSelect.cs" id="1_y3i7o"]
+[ext_resource type="PackedScene" uid="uid://ckryw7f5iaccw" path="res://scenes/Grid.tscn" id="2_ya7r4"]
+[ext_resource type="Script" uid="uid://ddyhyxfbfx1pm" path="res://scripts/ItemManeger.cs" id="3_6r7mr"]
+[ext_resource type="PackedScene" uid="uid://srmjpnnh44yi" path="res://scenes/Items.tscn" id="4_dn1e3"]
+[ext_resource type="Texture2D" uid="uid://8okqobeqmdoc" path="res://assets/paper-scroll.png" id="5_n17lh"]
+[ext_resource type="Script" uid="uid://khcdvocp51cf" path="res://scripts/DragAndDrop.cs" id="6_qmsns"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d6brr"]
+size = Vector2(94, 90)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qbusm"]
+font_size = 29
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7de00"]
+size = Vector2(418.529, 504.693)
 
 [node name="Stage1Level1" type="Control" unique_id=1405033603]
 layout_mode = 3
@@ -28,5 +43,55 @@ offset_right = 699.0
 offset_bottom = 110.0
 theme_override_font_sizes/font_size = 64
 text = "Level 1"
+
+[node name="Grid" parent="." unique_id=446653954 instance=ExtResource("2_ya7r4")]
+position = Vector2(183, 98)
+
+[node name="Grid2" parent="." unique_id=984660210 instance=ExtResource("2_ya7r4")]
+position = Vector2(519, 389)
+GridPosition = Vector2(400, 200)
+
+[node name="ItemManager" type="Node2D" parent="." unique_id=22352717]
+script = ExtResource("3_6r7mr")
+itemsScene = ExtResource("4_dn1e3")
+
+[node name="Button" type="Button" parent="ItemManager" unique_id=466726621]
+anchors_preset = -1
+offset_left = 1119.0
+offset_top = 526.0
+offset_right = 1142.0
+offset_bottom = 626.0
+grow_vertical = 0
+text = "[>"
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="ItemManager" unique_id=1899212011]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemManager/Area2D" unique_id=834811627]
+position = Vector2(1063, 574)
+shape = SubResource("RectangleShape2D_d6brr")
+
+[node name="Paper" type="Sprite2D" parent="." unique_id=1331654826]
+position = Vector2(967, 183.00002)
+scale = Vector2(0.61230475, 0.65625)
+texture = ExtResource("5_n17lh")
+script = ExtResource("6_qmsns")
+
+[node name="Label" type="Label" parent="Paper" unique_id=2070767765]
+offset_left = -184.54872
+offset_top = -175.23808
+offset_right = -31.03041
+offset_bottom = -135.23808
+text = "TASK"
+label_settings = SubResource("LabelSettings_qbusm")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="Paper" unique_id=421215061]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paper/Area2D" unique_id=2089114408]
+position = Vector2(-2.449463, 0.7618408)
+scale = Vector2(1, 0.9999993)
+shape = SubResource("RectangleShape2D_7de00")
 
 [connection signal="pressed" from="BackButton" to="." method="OnBackPressed"]

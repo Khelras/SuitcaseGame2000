@@ -3,12 +3,28 @@
   "WorkspaceRootPath": "D:\\Year 2\\People And Games\\Games_For_Impact\\SuitcaseGame2000\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F3BDBFCA-FBA9-4D25-9C28-E1AE0457D104}|SuitcaseGame2000.csproj|d:\\year 2\\people and games\\games_for_impact\\suitcasegame2000\\scripts\\stageselect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F3BDBFCA-FBA9-4D25-9C28-E1AE0457D104}|SuitcaseGame2000.csproj|solutionrelative:scripts\\stageselect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{40E290BC-31FA-4A14-9B01-78D7DDEF206F}|SuitcaseGame2000.csproj|d:\\year 2\\people and games\\games_for_impact\\suitcasegame2000\\scripts\\grid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40E290BC-31FA-4A14-9B01-78D7DDEF206F}|SuitcaseGame2000.csproj|solutionrelative:scripts\\grid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Year 2\\People And Games\\Games_For_Impact\\SuitcaseGame2000\\scripts\\MainMenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:scripts\\MainMenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Year 2\\People And Games\\Games_For_Impact\\SuitcaseGame2000\\scripts\\DragAndDrop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:scripts\\DragAndDrop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40E290BC-31FA-4A14-9B01-78D7DDEF206F}|SuitcaseGame2000.csproj|d:\\year 2\\people and games\\games_for_impact\\suitcasegame2000\\scripts\\itemmaneger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40E290BC-31FA-4A14-9B01-78D7DDEF206F}|SuitcaseGame2000.csproj|solutionrelative:scripts\\itemmaneger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40E290BC-31FA-4A14-9B01-78D7DDEF206F}|SuitcaseGame2000.csproj|d:\\year 2\\people and games\\games_for_impact\\suitcasegame2000\\scripts\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40E290BC-31FA-4A14-9B01-78D7DDEF206F}|SuitcaseGame2000.csproj|solutionrelative:scripts\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40E290BC-31FA-4A14-9B01-78D7DDEF206F}|SuitcaseGame2000.csproj|d:\\year 2\\people and games\\games_for_impact\\suitcasegame2000\\scripts\\items.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40E290BC-31FA-4A14-9B01-78D7DDEF206F}|SuitcaseGame2000.csproj|solutionrelative:scripts\\items.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40E290BC-31FA-4A14-9B01-78D7DDEF206F}|SuitcaseGame2000.csproj|d:\\year 2\\people and games\\games_for_impact\\suitcasegame2000\\scripts\\stageselect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40E290BC-31FA-4A14-9B01-78D7DDEF206F}|SuitcaseGame2000.csproj|solutionrelative:scripts\\stageselect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,20 +42,72 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Items.cs",
+              "DocumentMoniker": "D:\\Year 2\\People And Games\\Games_For_Impact\\SuitcaseGame2000\\scripts\\Items.cs",
+              "RelativeDocumentMoniker": "scripts\\Items.cs",
+              "ToolTip": "D:\\Year 2\\People And Games\\Games_For_Impact\\SuitcaseGame2000\\scripts\\Items.cs",
+              "RelativeToolTip": "scripts\\Items.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-16T11:14:16.905Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ItemManeger.cs",
+              "DocumentMoniker": "D:\\Year 2\\People And Games\\Games_For_Impact\\SuitcaseGame2000\\scripts\\ItemManeger.cs",
+              "RelativeDocumentMoniker": "scripts\\ItemManeger.cs",
+              "ToolTip": "D:\\Year 2\\People And Games\\Games_For_Impact\\SuitcaseGame2000\\scripts\\ItemManeger.cs",
+              "RelativeToolTip": "scripts\\ItemManeger.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAowDoAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-16T11:14:15.279Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Grid.cs",
+              "DocumentMoniker": "D:\\Year 2\\People And Games\\Games_For_Impact\\SuitcaseGame2000\\scripts\\Grid.cs",
+              "RelativeDocumentMoniker": "scripts\\Grid.cs",
+              "ToolTip": "D:\\Year 2\\People And Games\\Games_For_Impact\\SuitcaseGame2000\\scripts\\Grid.cs",
+              "RelativeToolTip": "scripts\\Grid.cs",
+              "ViewState": "AgIAAHMAAAAAAAAAAADwv5QAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-16T10:59:27.552Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "DragAndDrop.cs",
+              "DocumentMoniker": "D:\\Year 2\\People And Games\\Games_For_Impact\\SuitcaseGame2000\\scripts\\DragAndDrop.cs",
+              "RelativeDocumentMoniker": "scripts\\DragAndDrop.cs",
+              "ToolTip": "D:\\Year 2\\People And Games\\Games_For_Impact\\SuitcaseGame2000\\scripts\\DragAndDrop.cs",
+              "RelativeToolTip": "scripts\\DragAndDrop.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAwwGAAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-16T10:58:44.141Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "MainMenu.cs",
               "DocumentMoniker": "D:\\Year 2\\People And Games\\Games_For_Impact\\SuitcaseGame2000\\scripts\\MainMenu.cs",
               "RelativeDocumentMoniker": "scripts\\MainMenu.cs",
               "ToolTip": "D:\\Year 2\\People And Games\\Games_For_Impact\\SuitcaseGame2000\\scripts\\MainMenu.cs",
               "RelativeToolTip": "scripts\\MainMenu.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-10T01:47:01.567Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "StageSelect.cs",
               "DocumentMoniker": "D:\\Year 2\\People And Games\\Games_For_Impact\\SuitcaseGame2000\\scripts\\StageSelect.cs",
               "RelativeDocumentMoniker": "scripts\\StageSelect.cs",
