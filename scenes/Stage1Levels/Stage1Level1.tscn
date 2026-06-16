@@ -47,10 +47,6 @@ text = "Level 1"
 [node name="Grid" parent="." unique_id=446653954 instance=ExtResource("2_ya7r4")]
 position = Vector2(183, 98)
 
-[node name="Grid2" parent="." unique_id=984660210 instance=ExtResource("2_ya7r4")]
-position = Vector2(519, 389)
-GridPosition = Vector2(400, 200)
-
 [node name="ItemManager" type="Node2D" parent="." unique_id=22352717]
 script = ExtResource("3_6r7mr")
 itemsScene = ExtResource("4_dn1e3")
