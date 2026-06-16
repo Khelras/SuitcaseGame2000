@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dxra22f3j5kgf" path="res://scripts/MainMenu.cs" id="1_yqorp"]
 
-[node name="Game" type="Control" unique_id=264811829]
+[node name="MainMenu" type="Control" unique_id=264811829]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_yqorp")
