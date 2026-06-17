@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://cgux4s7q1u75t"]
 
-[ext_resource type="Script" uid="uid://cku717ckv3cfh" path="res://scripts/StageSelect.cs" id="1_y3i7o"]
+[ext_resource type="Script" uid="uid://cku717ckv3cfh" path="res://Scripts/StageSelect.cs" id="1_y3i7o"]
 [ext_resource type="PackedScene" uid="uid://ckryw7f5iaccw" path="res://scenes/Grid.tscn" id="2_ya7r4"]
-[ext_resource type="Script" uid="uid://ddyhyxfbfx1pm" path="res://scripts/ItemManeger.cs" id="3_6r7mr"]
+[ext_resource type="Script" uid="uid://ddyhyxfbfx1pm" path="res://Scripts/ItemManeger.cs" id="3_6r7mr"]
 [ext_resource type="PackedScene" uid="uid://srmjpnnh44yi" path="res://scenes/Items.tscn" id="4_dn1e3"]
 [ext_resource type="Texture2D" uid="uid://8okqobeqmdoc" path="res://assets/paper-scroll.png" id="5_n17lh"]
-[ext_resource type="Script" uid="uid://khcdvocp51cf" path="res://scripts/DragAndDrop.cs" id="6_qmsns"]
+[ext_resource type="Script" uid="uid://khcdvocp51cf" path="res://Scripts/DragAndDrop.cs" id="6_qmsns"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d6brr"]
 size = Vector2(94, 90)

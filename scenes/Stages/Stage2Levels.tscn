@@ -1,13 +1,13 @@
-[gd_scene format=3 uid="uid://b1lsthpulwptk"]
+[gd_scene format=3 uid="uid://cw5w8todmk1ei"]
 
-[ext_resource type="Script" uid="uid://cku717ckv3cfh" path="res://scripts/StageSelect.cs" id="1_cf4x3"]
+[ext_resource type="Script" uid="uid://cku717ckv3cfh" path="res://Scripts/StageSelect.cs" id="1_25875"]
 
-[node name="Game" type="Control" unique_id=530972980]
+[node name="Stage2Levels" type="Control" unique_id=1698672075]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_cf4x3")
+script = ExtResource("1_25875")
 
-[node name="BackButton" type="Button" parent="." unique_id=1744974397]
+[node name="BackButton" type="Button" parent="." unique_id=185741869]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.6723796
@@ -21,7 +21,7 @@ text = "Back
 "
 metadata/_edit_use_anchors_ = true
 
-[node name="Stage1Levels" type="Button" parent="." unique_id=1841724682]
+[node name="Stage1Levels" type="Button" parent="." unique_id=1226139876]
 layout_mode = 0
 offset_left = 102.0
 offset_top = 203.0
@@ -30,7 +30,7 @@ offset_bottom = 242.427
 text = "Level 1"
 metadata/_edit_use_anchors_ = true
 
-[node name="Stage2Levels2" type="Button" parent="." unique_id=965504370]
+[node name="Stage2Levels2" type="Button" parent="." unique_id=896000194]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.6723796
@@ -45,15 +45,15 @@ text = "Level 2
 "
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="." unique_id=1077433428]
+[node name="Label" type="Label" parent="." unique_id=600832358]
 layout_mode = 0
 offset_left = 498.0
 offset_top = 22.0
 offset_right = 699.0
 offset_bottom = 110.0
 theme_override_font_sizes/font_size = 64
-text = "Stage 1"
+text = "Stage 2"
 
 [connection signal="pressed" from="BackButton" to="." method="OnBackPressed"]
-[connection signal="pressed" from="Stage1Levels" to="." method="OnStage1Level1Pressed"]
-[connection signal="pressed" from="Stage2Levels2" to="." method="OnStage1Level2Pressed"]
+[connection signal="pressed" from="Stage1Levels" to="." method="OnStage2Level1Pressed"]
+[connection signal="pressed" from="Stage2Levels2" to="." method="OnStage2Level2Pressed"]
