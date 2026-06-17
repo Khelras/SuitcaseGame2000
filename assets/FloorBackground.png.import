@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djr6pgsgpw88o"
-path="res://.godot/imported/RTS_Crate.png-e6bdb1bbbd928c49fc14f9f13e317814.ctex"
+uid="uid://egeld5scq2sr"
+path="res://.godot/imported/FloorBackground.png-ed0af6c0b5290fd1ab31a9cc8596ab9e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/RTS_Crate.png"
-dest_files=["res://.godot/imported/RTS_Crate.png-e6bdb1bbbd928c49fc14f9f13e317814.ctex"]
+source_file="res://assets/FloorBackground.png"
+dest_files=["res://.godot/imported/FloorBackground.png-ed0af6c0b5290fd1ab31a9cc8596ab9e.ctex"]
 
 [params]
 

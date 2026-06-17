@@ -1,58 +1,59 @@
 [gd_scene format=3 uid="uid://srmjpnnh44yi"]
 
 [ext_resource type="Script" uid="uid://83ykjus4ov0s" path="res://scripts/Items.cs" id="1_itnmx"]
-[ext_resource type="Texture2D" uid="uid://djr6pgsgpw88o" path="res://assets/RTS_Crate.png" id="1_uwk64"]
-[ext_resource type="Texture2D" uid="uid://bjdcolxsjtsrx" path="res://assets/Untitled.png" id="2_7kw4u"]
+[ext_resource type="Texture2D" uid="uid://lwdl0y8rdqmc" path="res://assets/Photo_Asset_One.png" id="2_fd15g"]
 [ext_resource type="Script" uid="uid://khcdvocp51cf" path="res://scripts/DragAndDrop.cs" id="3_45gv6"]
-[ext_resource type="Texture2D" uid="uid://bjm36ksckyobt" path="res://assets/artworks-r6seSP84nT6z4DJx-iG01PA-t1080x1080.jpg" id="4_fd15g"]
+[ext_resource type="Texture2D" uid="uid://ctv2wt4c5nmn3" path="res://assets/Photo_Asset_Two.png" id="4_45gv6"]
+[ext_resource type="Texture2D" uid="uid://t3dktaphlnkq" path="res://assets/ShirtStack.png" id="5_g3pqv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_45gv6"]
-size = Vector2(378.8803, 381.49063)
+size = Vector2(172.52179, 169.42557)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g3pqv"]
-size = Vector2(196.22955, 176.73108)
+size = Vector2(159.77606, 170.13739)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oyx72"]
-size = Vector2(796.7996, 758.07776)
+size = Vector2(242.0715, 266.85278)
 
 [node name="Items" type="Node2D" unique_id=485295319]
 script = ExtResource("1_itnmx")
 
-[node name="Box" type="Sprite2D" parent="." unique_id=1914670310]
+[node name="Photo" type="Sprite2D" parent="." unique_id=1914670310]
 visibility_layer = 3
-position = Vector2(1055, 573)
-scale = Vector2(0.19531251, 0.19921874)
-texture = ExtResource("1_uwk64")
+position = Vector2(1059, 568.9592)
+scale = Vector2(0.5390625, 0.5371094)
+texture = ExtResource("2_fd15g")
 script = ExtResource("3_45gv6")
 
-[node name="Area2D" type="Area2D" parent="Box" unique_id=1144737606]
+[node name="Area2D" type="Area2D" parent="Photo" unique_id=1144737606]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Box/Area2D" unique_id=1229559037]
-scale = Vector2(0.9999998, 0.9999992)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Photo/Area2D" unique_id=1229559037]
+position = Vector2(-2.7825928, 0.116355896)
+scale = Vector2(0.99999976, 0.9999992)
 shape = SubResource("RectangleShape2D_45gv6")
 
-[node name="Circle" type="Sprite2D" parent="." unique_id=919571869]
-position = Vector2(1055, 573)
-scale = Vector2(0.44335938, 0.3847656)
-texture = ExtResource("2_7kw4u")
+[node name="FamilyPhoto" type="Sprite2D" parent="." unique_id=919571869]
+position = Vector2(1058.9998, 568.9592)
+scale = Vector2(0.49121082, 0.48404956)
+texture = ExtResource("4_45gv6")
 script = ExtResource("3_45gv6")
 
-[node name="Area2D" type="Area2D" parent="Circle" unique_id=1941682073]
+[node name="Area2D" type="Area2D" parent="FamilyPhoto" unique_id=1941682073]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Circle/Area2D" unique_id=1456001281]
-position = Vector2(1.1276855, -10.395996)
-scale = Vector2(0.9999997, 0.9999993)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FamilyPhoto/Area2D" unique_id=1456001281]
+position = Vector2(-0.25453854, 0.96835434)
+scale = Vector2(0.99999976, 0.99999934)
 shape = SubResource("RectangleShape2D_g3pqv")
 
-[node name="Cat" type="Sprite2D" parent="." unique_id=1704969134]
-position = Vector2(1055, 573)
-scale = Vector2(0.10416667, 0.096296296)
-texture = ExtResource("4_fd15g")
+[node name="Shirt" type="Sprite2D" parent="." unique_id=1704969134]
+position = Vector2(1057.9999, 568.9592)
+scale = Vector2(0.28768542, 0.23092106)
+texture = ExtResource("5_g3pqv")
 script = ExtResource("3_45gv6")
 
-[node name="Area2D" type="Area2D" parent="Cat" unique_id=575405444]
+[node name="Area2D" type="Area2D" parent="Shirt" unique_id=575405444]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cat/Area2D" unique_id=353141459]
-position = Vector2(-4.7998047, -15.57666)
-scale = Vector2(1, 0.99999905)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shirt/Area2D" unique_id=353141459]
+position = Vector2(-0.18094826, -0.17665482)
+scale = Vector2(1, 0.99999887)
 shape = SubResource("RectangleShape2D_oyx72")

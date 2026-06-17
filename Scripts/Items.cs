@@ -14,9 +14,9 @@ public partial class Items : Node2D
     {
         //Gets the sprites into index order 
         orderSprites = new List<Sprite2D>();
-        orderSprites.Add(GetNode<Sprite2D>("Box"));
-        orderSprites.Add(GetNode<Sprite2D>("Circle"));
-        orderSprites.Add(GetNode<Sprite2D>("Cat"));
+        orderSprites.Add(GetNode<Sprite2D>("Photo"));
+        orderSprites.Add(GetNode<Sprite2D>("FamilyPhoto"));
+        orderSprites.Add(GetNode<Sprite2D>("Shirt"));
 
       
    
