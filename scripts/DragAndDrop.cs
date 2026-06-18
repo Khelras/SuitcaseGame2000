@@ -4,9 +4,12 @@ using System.Collections.Generic;
 
 public partial class DragAndDrop : Sprite2D
 {
+    // -- Drag and Drop Properties -- //
+    // Placement
     private Grid grid;
     private Vector2 originalPosition;
 
+    // Draging
     private bool dragging = false;
     private Vector2 offset;
     private Area2D area;
@@ -16,6 +19,8 @@ public partial class DragAndDrop : Sprite2D
     private List<Vector2I> previousCells = new List<Vector2I>();
 
     private bool hasPlaced = false;
+    // -- //
+
     public override void _Ready()
     {
         area = GetNode<Area2D>("Area2D");
