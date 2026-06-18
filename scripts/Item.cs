@@ -1,34 +1,41 @@
 using Godot;
-using System;
 using System.Collections.Generic;
 
+/// <summary>
+///     A draggable inventory item that snaps to a tile grid when dropped.
+///     Handles its own drag input, cell occupancy, and placement validation.
+/// </summary>
 public partial class Item : Sprite2D
 {
     [ExportGroup("Item Configuration")]
-    [Export] private Vector2I GridCellSize;
-    [Export] private Vector2I ItemSizeByCell;
+    [Export] public Vector2I GridCellSize { get; private set; }
+    [Export] public Vector2I ItemSizeByCell { get; private set; }
 
-    // -- Drag and Drop State --
+    // References
     private Grid grid;
-    private Vector2 originalPosition;
-
-    private bool dragging = false;
-    private Vector2 offset;
     private Area2D area;
     private CollisionShape2D collisionShape;
 
+    // Drag state
+    public bool dragging { get; private set; } = false;
+    private Vector2 offset;
+    private Vector2 originalPosition;
+
+    // Placement state
     private List<Vector2I> currentCells = new List<Vector2I>();
     private List<Vector2I> previousCells = new List<Vector2I>();
     private bool hasPlaced = false;
-    // -- //
+
+    // ==================================================
+    //  Lifecycle
+    // ==================================================
 
     public override void _Ready()
     {
-        // ---- Viewport picking config (topmost item wins) ----
+        // Topmost Area2D under the mouse wins input which prevents multi-item drag
         GetViewport().PhysicsObjectPickingSort = true;
         GetViewport().PhysicsObjectPickingFirstOnly = true;
 
-        // ---- Grid cell size default ----
         if (GridCellSize.X == 0 && GridCellSize.Y == 0)
         {
             GD.PushWarning("[Item] Defaulting GridCellSize to 32x32.");
@@ -44,19 +51,19 @@ public partial class Item : Sprite2D
             return;
         }
 
-        // ---- Scale sprite to match grid footprint ----
+        // Scale the sprite so the texture fills exactly ItemSizeByCell * GridCellSize pixels
         Scale = (Vector2)(ItemSizeByCell * GridCellSize) / Texture.GetSize();
 
-        // ---- Set up collision shape ----
+        // Duplicate the shape so each Item instance has its own copy (shapes are shared resources)
         collisionShape = GetNode<CollisionShape2D>("Area2D/CollisionShape2D");
+        collisionShape.Shape = (Shape2D)collisionShape.Shape.Duplicate();
         if (collisionShape.Shape is RectangleShape2D rectShape)
-            rectShape.Size = Texture.GetSize();
+            rectShape.Size = (Vector2)(ItemSizeByCell * GridCellSize) / Scale;
 
-        // ---- Wire up drag input ----
         area = GetNode<Area2D>("Area2D");
         area.InputEvent += OnInputEvent;
 
-        // ---- Find grid via group ----
+        // Grid is found via group so Items don't need a direct scene reference
         grid = GetTree().GetFirstNodeInGroup("grid") as Grid;
         if (grid == null)
             GD.PushWarning("[Item] No node found in 'grid' group.");
@@ -68,10 +75,19 @@ public partial class Item : Sprite2D
 
         GlobalPosition = GetGlobalMousePosition() - offset;
 
-        Rect2 rect = GetWorldCollisionRect();
-        currentCells = grid.GetCellsCoveredByRect(rect);
-        grid.ShowPreviewCells(currentCells, AreCellsValid(currentCells));
+        Vector2 topLeft = GetWorldTopLeft();
+        currentCells = grid.GetCellsForItem(topLeft, ItemSizeByCell);
+
+        // Hide preview when outside the grid, show green/red when inside
+        if (currentCells.Count == 0)
+            grid.HidePreviewCells();
+        else
+            grid.ShowPreviewCells(currentCells, AreCellsValid(currentCells));
     }
+
+    // ==================================================
+    //  Input
+    // ==================================================
 
     private void OnInputEvent(Node viewport, InputEvent @event, long shapeIdx)
     {
@@ -79,92 +95,89 @@ public partial class Item : Sprite2D
         if (mouseButton.ButtonIndex != MouseButton.Left) return;
 
         if (mouseButton.Pressed)
+            PickUp();
+        else
+            Drop();
+    }
+
+    private void PickUp()
+    {
+        dragging = true;
+        ZIndex = 10; // render and pick above all siblings
+        Modulate = new Color(1f, 1f, 1f, 0.5f);
+        originalPosition = GlobalPosition;
+        offset = GetGlobalMousePosition() - GlobalPosition;
+
+        // Free previously occupied cells so they're available during the drag
+        if (hasPlaced)
+            foreach (Vector2I cell in previousCells)
+                grid.FreeCell(cell);
+    }
+
+    private void Drop()
+    {
+        dragging = false;
+        ZIndex = 0;
+        Modulate = Colors.White;
+
+        Vector2 topLeft = GetWorldTopLeft();
+        currentCells = grid.GetCellsForItem(topLeft, ItemSizeByCell);
+
+        bool onGrid = currentCells.Count > 0;
+        bool valid = onGrid && AreCellsValid(currentCells);
+
+        if (valid)
         {
-            // ---- Pick up ----
-            dragging = true;
-            ZIndex = 10;
-            Modulate = new Color(1, 1, 1, 0.5f);
-            originalPosition = GlobalPosition;
-            offset = GetGlobalMousePosition() - GlobalPosition;
+            // Snap to grid and occupy the covered cells
+            GlobalPosition = grid.GetSnappedItemCenter(topLeft, ItemSizeByCell, GridCellSize);
+            currentCells = grid.GetCellsForItem(GetWorldTopLeft(), ItemSizeByCell);
+
+            foreach (Vector2I cell in currentCells)
+                grid.OccupyCell(cell);
+
+            previousCells = new List<Vector2I>(currentCells);
+            hasPlaced = true;
+        }
+        else if (onGrid)
+        {
+            // On grid but blocked — return to original position and restore occupied cells
+            GlobalPosition = originalPosition;
 
             if (hasPlaced)
-            {
                 foreach (Vector2I cell in previousCells)
-                    grid.FreeCell(cell);
-            }
+                    grid.OccupyCell(cell);
         }
         else
         {
-            // ---- Drop ----
-            dragging = false;
-            ZIndex = 0;
-            Modulate = Colors.White;
-
-            Rect2 rect = GetWorldCollisionRect();
-            currentCells = grid.GetCellsCoveredByRect(rect);
-
-            if (AreCellsValid(currentCells))
-            {
-                // Snap the top-left corner of the item to the nearest cell
-                Vector2I topLeftCell = grid.WorldToCell(rect.Position);
-                topLeftCell = new Vector2I(
-                    Mathf.Clamp(topLeftCell.X, 0, grid.GridSize.X - 1),
-                    Mathf.Clamp(topLeftCell.Y, 0, grid.GridSize.Y - 1)
-                );
-
-                Vector2 snappedWorld = grid.CellToWorld(topLeftCell);
-                GlobalPosition = snappedWorld + rect.Size / 2f;
-
-                // Re-sample after snapping
-                currentCells = grid.GetCellsCoveredByRect(GetWorldCollisionRect());
-                foreach (Vector2I cell in currentCells)
-                    grid.OccupyCell(cell);
-
-                previousCells = new List<Vector2I>(currentCells);
-                hasPlaced = true;
-            }
-            else
-            {
-                GlobalPosition = originalPosition;
-
-                if (hasPlaced)
-                {
-                    foreach (Vector2I cell in previousCells)
-                        grid.OccupyCell(cell);
-                }
-            }
-
-            grid.HidePreviewCells();
+            // Outside grid — leave item where it was dropped, clear placement state
+            hasPlaced = false;
+            previousCells.Clear();
         }
+
+        grid.HidePreviewCells();
     }
 
-    // ---- Helpers ----
+    // ==================================================
+    //  Helpers
+    // ==================================================
 
-    private Rect2 GetWorldCollisionRect()
+    /// <summary>
+    ///     Returns the world-space top-left corner of this item's footprint.
+    /// </summary>
+    private Vector2 GetWorldTopLeft()
     {
-        if (collisionShape.Shape is not RectangleShape2D rectShape)
-        {
-            GD.PushWarning("[Item] CollisionShape2D is not a RectangleShape2D.");
-            return new Rect2(GlobalPosition, Vector2.Zero);
-        }
-
-        Vector2 size = rectShape.Size * collisionShape.GlobalScale.Abs();
-        Vector2 topLeft = collisionShape.GlobalPosition - size / 2f;
-        return new Rect2(topLeft, size);
+        return GlobalPosition - (Vector2)(ItemSizeByCell * GridCellSize) / 2f;
     }
 
+    /// <summary>
+    ///     Returns true if all cells are in bounds and unoccupied
+    /// </summary>
     private bool AreCellsValid(List<Vector2I> cells)
     {
         if (cells.Count == 0) return false;
         foreach (Vector2I cell in cells)
-        {
             if (!grid.IsCellInBounds(cell) || grid.IsCellOccupied(cell))
                 return false;
-        }
         return true;
     }
-
-    public bool GetDragging() => dragging;
-    public Vector2I GetItemSizeByCell() => ItemSizeByCell;
-    public Vector2I GetGridCellSize() => GridCellSize;
 }

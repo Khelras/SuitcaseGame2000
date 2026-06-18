@@ -1,42 +1,29 @@
 [gd_scene format=3 uid="uid://barcu3dmues72"]
 
-[ext_resource type="PackedScene" uid="uid://dnsm41rxgb3e1" path="res://scenes/ItemManager.tscn" id="2_78awf"]
-[ext_resource type="Texture2D" uid="uid://8okqobeqmdoc" path="res://assets/paper-scroll.png" id="4_iywne"]
+[ext_resource type="PackedScene" uid="uid://bq2elwnpjopcb" path="res://scenes/Item.tscn" id="2_s0nni"]
+[ext_resource type="Texture2D" uid="uid://vyjwadoa8lu8" path="res://assets/Pants_Asset_One.png" id="3_aug50"]
+[ext_resource type="Texture2D" uid="uid://lwdl0y8rdqmc" path="res://assets/Photo_Asset_One.png" id="4_kiw3p"]
+[ext_resource type="Texture2D" uid="uid://ctv2wt4c5nmn3" path="res://assets/Photo_Asset_Two.png" id="5_400sg"]
 [ext_resource type="PackedScene" uid="uid://ckryw7f5iaccw" path="res://scenes/Grid.tscn" id="5_iywne"]
-[ext_resource type="Script" uid="uid://khcdvocp51cf" path="res://Scripts/DragAndDrop.cs" id="5_p57ef"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_u5sy4"]
-font_size = 29
-font_color = Color(0, 0, 0, 1)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iywne"]
-size = Vector2(418.529, 504.693)
 
 [node name="Game" type="Node2D" unique_id=1111423664]
 
 [node name="Grid" parent="." unique_id=446653954 instance=ExtResource("5_iywne")]
 
-[node name="ItemManager" parent="." unique_id=571025654 instance=ExtResource("2_78awf")]
-position = Vector2(1190, 653)
+[node name="Item" parent="." unique_id=1332733576 instance=ExtResource("2_s0nni")]
+position = Vector2(814, 380)
+texture = ExtResource("3_aug50")
+GridCellSize = Vector2i(32, 32)
+ItemSizeByCell = Vector2i(4, 8)
 
-[node name="Paper" type="Sprite2D" parent="." unique_id=1700458966]
-position = Vector2(967, 183.00002)
-scale = Vector2(0.61230475, 0.65625)
-texture = ExtResource("4_iywne")
-script = ExtResource("5_p57ef")
+[node name="Item2" parent="." unique_id=1167000266 instance=ExtResource("2_s0nni")]
+position = Vector2(822, 524)
+texture = ExtResource("4_kiw3p")
+GridCellSize = Vector2i(32, 32)
+ItemSizeByCell = Vector2i(4, 4)
 
-[node name="Label" type="Label" parent="Paper" unique_id=1022670918]
-offset_left = -184.54872
-offset_top = -175.23808
-offset_right = -31.03041
-offset_bottom = -135.23808
-text = "TASK"
-label_settings = SubResource("LabelSettings_u5sy4")
-horizontal_alignment = 1
-
-[node name="Area2D" type="Area2D" parent="Paper" unique_id=1231271169]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Paper/Area2D" unique_id=1205530455]
-position = Vector2(-2.449463, 0.7618408)
-scale = Vector2(1, 0.9999993)
-shape = SubResource("RectangleShape2D_iywne")
+[node name="Item3" parent="." unique_id=1083760439 instance=ExtResource("2_s0nni")]
+position = Vector2(964, 320)
+texture = ExtResource("5_400sg")
+GridCellSize = Vector2i(32, 32)
+ItemSizeByCell = Vector2i(4, 4)

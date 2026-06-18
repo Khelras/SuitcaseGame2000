@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System;
 
 /// <summary>
-///     The Grid class represents a Grid in the game.
+/// Manages a tile-based grid — cell creation, occupancy tracking,
+/// item placement snapping, and drag preview highlighting.
 /// </summary>
 public partial class Grid : Node2D
 {
@@ -14,115 +15,115 @@ public partial class Grid : Node2D
     [ExportGroup("Grid References")]
     [Export] public TileMapLayer GridMap { get; set; }
 
+    // Tracks which cells are currently occupied by placed items
     private HashSet<Vector2I> occupiedCells = new HashSet<Vector2I>();
 
+    // Preview highlight state (drawn via _Draw)
     private bool showingPreview = false;
     private List<Vector2I> previewCells = new List<Vector2I>();
     private Color previewColor = Colors.Green;
 
+    // ==================================================
+    //  Lifecycle
+    // ==================================================
 
-    // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         ZAsRelative = false;
         ZIndex = 0;
         ShowBehindParent = false;
 
-        // Check if TileMapLayer Reference is Set
         if (GridMap == null)
         {
-            // DEBUG: If the TileMapLayer reference is not set, print a warning to the console
-            GD.PushWarning("TileMapLayer reference is not set. Please assign it in the inspector.");
+            GD.PushWarning("[Grid] TileMapLayer reference is not set. Please assign it in the inspector.");
             return;
         }
 
+        // Render the tilemap behind everything else
         GridMap.ZAsRelative = true;
         GridMap.ZIndex = -10;
         GridMap.ShowBehindParent = true;
 
-        // Set the Position of the Grid based on the set Grid Position
-        this.GlobalPosition = this.GridPosition;
+        GlobalPosition = GridPosition;
 
-        // Loop to create the Grid based on the set Grid Size
-        for (int x = 0; x < this.GridSize.X; x++)
+        // Populate the tilemap with cells
+        for (int x = 0; x < GridSize.X; x++)
+            for (int y = 0; y < GridSize.Y; y++)
+                GridMap.SetCell(new Vector2I(x, y), 0, Vector2I.Zero, 0);
+    }
+
+    public override void _Process(double delta) { }
+
+    // ==================================================
+    //  Drawing
+    // ==================================================
+
+    public override void _Draw()
+    {
+        if (!showingPreview || GridMap == null || GridMap.TileSet == null) return;
+
+        Vector2 tileSize = GridMap.TileSet.TileSize;
+
+        foreach (Vector2I cell in previewCells)
         {
-            for (int y = 0; y < this.GridSize.Y; y++)
-            {
-                this.GridMap.SetCell(new Vector2I(x, y), 0, Vector2I.Zero, 0);
-            }
+            // Convert cell to local draw space and draw an outline rect
+            Vector2 localPos = ToLocal(CellToWorld(cell));
+            Rect2 rect = new Rect2(localPos - tileSize / 2f, tileSize);
+            DrawRect(rect, previewColor, false, 4f);
         }
     }
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta)
-    {
-    }
+    // ==================================================
+    //  Item Placement
+    // ==================================================
 
-    // Method to Snap a World Position to the Grid
-    public Vector2 SnapWorldPositionToGrid(Vector2 WorldPosition)
+    /// <summary>
+    ///     Returns all cells covered by an item footprint starting from worldTopLeft.
+    ///     Returns an empty list if any part of the footprint falls outside the grid.
+    /// </summary>
+    public List<Vector2I> GetCellsForItem(Vector2 worldTopLeft, Vector2I itemSizeByCell)
     {
-        Vector2 LocalPosition = GridMap.ToLocal(WorldPosition);
-        Vector2I CellPosition = GridMap.LocalToMap(LocalPosition);
-        Vector2 SnappedLocalPosition = GridMap.MapToLocal(CellPosition);
+        Vector2I originCell = WorldToCell(worldTopLeft);
 
-        return GridMap.ToGlobal(SnappedLocalPosition);
-    }
+        // Check both corners — if either is out of bounds the whole item is off-grid
+        Vector2I bottomRightCell = new Vector2I(
+            originCell.X + itemSizeByCell.X - 1,
+            originCell.Y + itemSizeByCell.Y - 1
+        );
 
-    // Utility Methods for Grid Management
-    public Vector2I WorldToCell(Vector2 WorldPosition)
-    {
-        Vector2 LocalPosition = GridMap.ToLocal(WorldPosition);
-        return GridMap.LocalToMap(LocalPosition);
-    }
-    public Vector2 CellToWorld(Vector2I CellPosition)
-    {
-        Vector2 LocalPosition = GridMap.MapToLocal(CellPosition);
-        return GridMap.ToGlobal(LocalPosition);
-    }
-    public bool IsCellOccupied(Vector2I CellPosition)
-    {
-        return occupiedCells.Contains(CellPosition);
-    }
-    public void OccupyCell(Vector2I CellPosition)
-    {
-        occupiedCells.Add(CellPosition);
-    }
-    public void FreeCell(Vector2I CellPosition)
-    {
-        occupiedCells.Remove(CellPosition);
-    }
+        if (!IsCellInBounds(originCell) || !IsCellInBounds(bottomRightCell))
+            return new List<Vector2I>();
 
-    public bool IsCellInBounds(Vector2I CellPosition)
-    {
-        return CellPosition.X >= 0 && CellPosition.X < GridSize.X && CellPosition.Y >= 0 && CellPosition.Y < GridSize.Y;
-    }
-
-    public List<Vector2I> GetCellsCoveredByRect(Rect2 worldRect)
-    {
         List<Vector2I> cells = new List<Vector2I>();
-
-        Vector2 topLeftWorld = worldRect.Position;
-        Vector2 bottomRightWorld = worldRect.End - new Vector2(1, 1); // Subtract a small value to ensure we get the correct cell for the bottom-right corner
-
-        Vector2I topLeft = WorldToCell(topLeftWorld);
-        Vector2I bottomRight = WorldToCell(bottomRightWorld);
-
-        int minX = Math.Min(topLeft.X, bottomRight.X);
-        int maxX = Math.Max(topLeft.X, bottomRight.X);
-        int minY = Math.Min(topLeft.Y, bottomRight.Y);
-        int maxY = Math.Max(topLeft.Y, bottomRight.Y);
-
-        for (int x = minX; x <= maxX; x++)
-        {
-            for (int y = minY; y <= maxY; y++)
-            {
-                cells.Add(new Vector2I(x, y));
-            }
-        }
+        for (int x = 0; x < itemSizeByCell.X; x++)
+            for (int y = 0; y < itemSizeByCell.Y; y++)
+                cells.Add(new Vector2I(originCell.X + x, originCell.Y + y));
 
         return cells;
     }
 
+    /// <summary>
+    ///     Returns the world position an item's center should snap to,
+    ///     given its top-left world position and cell footprint.
+    ///     MapToLocal returns cell centers, so we offset back to the top-left corner first.
+    /// </summary>
+    public Vector2 GetSnappedItemCenter(Vector2 worldTopLeft, Vector2I itemSizeByCell, Vector2I gridCellSize)
+    {
+        Vector2I originCell = WorldToCell(worldTopLeft);
+        Vector2 tileSize = (Vector2)GridMap.TileSet.TileSize;
+        Vector2 cellTopLeft = CellToWorld(originCell) - tileSize / 2f;
+        Vector2 halfItemSize = (Vector2)(itemSizeByCell * gridCellSize) / 2f;
+
+        return cellTopLeft + halfItemSize;
+    }
+
+    // ==================================================
+    //  Preview Highlight
+    // ==================================================
+
+    /// <summary>
+    ///     Highlights the given cells green (valid) or red (invalid) during a drag.
+    /// </summary>
     public void ShowPreviewCells(List<Vector2I> cells, bool valid)
     {
         previewCells = cells;
@@ -131,6 +132,9 @@ public partial class Grid : Node2D
         QueueRedraw();
     }
 
+    /// <summary>
+    ///     Clears the drag preview highlight.
+    /// </summary>
     public void HidePreviewCells()
     {
         showingPreview = false;
@@ -138,23 +142,47 @@ public partial class Grid : Node2D
         QueueRedraw();
     }
 
-    public override void _Draw()
+    // ==================================================
+    //  Cell Utilities
+    // ==================================================
+
+    /// <summary>
+    ///     Converts a world position to the nearest grid cell coordinate.
+    /// </summary>
+    public Vector2I WorldToCell(Vector2 worldPosition)
     {
-        if (!showingPreview || GridMap == null || GridMap.TileSet == null)
-        {
-            return;
-        }
-
-        Vector2 tileSize = GridMap.TileSet.TileSize;
-
-        foreach (Vector2I cell in previewCells)
-        {
-            Vector2 worldPos = CellToWorld(cell);
-            Vector2 localPos = ToLocal(worldPos);
-
-            Rect2 rect = new Rect2(localPos - tileSize / 2f, tileSize);
-
-            DrawRect(rect, previewColor, false, 4f);
-        }
+        return GridMap.LocalToMap(GridMap.ToLocal(worldPosition));
     }
+
+    /// <summary>
+    ///     Converts a grid cell coordinate to its world position (cell center).
+    /// </summary>
+    public Vector2 CellToWorld(Vector2I cellPosition)
+    {
+        return GridMap.ToGlobal(GridMap.MapToLocal(cellPosition));
+    }
+
+    /// <summary>
+    ///     Returns true if the cell is within the grid bounds.
+    /// </summary>
+    public bool IsCellInBounds(Vector2I cell)
+    {
+        return cell.X >= 0 && cell.X < GridSize.X &&
+               cell.Y >= 0 && cell.Y < GridSize.Y;
+    }
+
+    /// <summary>
+    ///     Returns true if the cell is already occupied by a placed item.
+    /// </summary>
+    public bool IsCellOccupied(Vector2I cell) => occupiedCells.Contains(cell);
+
+    /// <summary>
+    ///     Marks a cell as occupied.
+    /// </summary>
+    public void OccupyCell(Vector2I cell) => occupiedCells.Add(cell);
+
+    /// <summary>
+    ///     Marks a cell as free.
+    /// </summary>
+    public void FreeCell(Vector2I cell) => occupiedCells.Remove(cell);
 }
