@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://srmjpnnh44yi"]
 
-[ext_resource type="Script" uid="uid://83ykjus4ov0s" path="res://scripts/Items.cs" id="1_itnmx"]
+[ext_resource type="Script" uid="uid://83ykjus4ov0s" path="res://Scripts/Items.cs" id="1_itnmx"]
 [ext_resource type="Texture2D" uid="uid://lwdl0y8rdqmc" path="res://assets/Photo_Asset_One.png" id="2_fd15g"]
-[ext_resource type="Script" uid="uid://khcdvocp51cf" path="res://scripts/DragAndDrop.cs" id="3_45gv6"]
+[ext_resource type="Script" uid="uid://khcdvocp51cf" path="res://Scripts/DragAndDrop.cs" id="3_45gv6"]
 [ext_resource type="Texture2D" uid="uid://ctv2wt4c5nmn3" path="res://assets/Photo_Asset_Two.png" id="4_45gv6"]
 [ext_resource type="Texture2D" uid="uid://t3dktaphlnkq" path="res://assets/ShirtStack.png" id="5_g3pqv"]
 
@@ -20,7 +20,6 @@ script = ExtResource("1_itnmx")
 
 [node name="Photo" type="Sprite2D" parent="." unique_id=1914670310]
 visibility_layer = 3
-position = Vector2(1059, 568.9592)
 scale = Vector2(0.5390625, 0.5371094)
 texture = ExtResource("2_fd15g")
 script = ExtResource("3_45gv6")
@@ -33,7 +32,6 @@ scale = Vector2(0.99999976, 0.9999992)
 shape = SubResource("RectangleShape2D_45gv6")
 
 [node name="FamilyPhoto" type="Sprite2D" parent="." unique_id=919571869]
-position = Vector2(1058.9998, 568.9592)
 scale = Vector2(0.49121082, 0.48404956)
 texture = ExtResource("4_45gv6")
 script = ExtResource("3_45gv6")
@@ -46,7 +44,6 @@ scale = Vector2(0.99999976, 0.99999934)
 shape = SubResource("RectangleShape2D_g3pqv")
 
 [node name="Shirt" type="Sprite2D" parent="." unique_id=1704969134]
-position = Vector2(1057.9999, 568.9592)
 scale = Vector2(0.28768542, 0.23092106)
 texture = ExtResource("5_g3pqv")
 script = ExtResource("3_45gv6")

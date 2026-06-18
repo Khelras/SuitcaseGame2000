@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ckryw7f5iaccw"]
 
-[ext_resource type="Script" uid="uid://dfty4upc62h8s" path="res://scripts/Grid.cs" id="1_8rubn"]
+[ext_resource type="Script" uid="uid://dkan7mrkd6jvc" path="res://scripts/Grid.cs" id="1_8rubn"]
 [ext_resource type="Texture2D" uid="uid://ch76hnd1tlil5" path="res://assets/GridTilePlaceholder.png" id="2_48dov"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t5fjg"]

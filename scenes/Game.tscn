@@ -1,13 +1,9 @@
 [gd_scene format=3 uid="uid://barcu3dmues72"]
 
-[ext_resource type="Script" uid="uid://ddyhyxfbfx1pm" path="res://scripts/ItemManeger.cs" id="2_s0nni"]
-[ext_resource type="PackedScene" uid="uid://srmjpnnh44yi" path="res://scenes/Items.tscn" id="3_s0nni"]
+[ext_resource type="PackedScene" uid="uid://dnsm41rxgb3e1" path="res://scenes/ItemManager.tscn" id="2_78awf"]
 [ext_resource type="Texture2D" uid="uid://8okqobeqmdoc" path="res://assets/paper-scroll.png" id="4_iywne"]
 [ext_resource type="PackedScene" uid="uid://ckryw7f5iaccw" path="res://scenes/Grid.tscn" id="5_iywne"]
-[ext_resource type="Script" uid="uid://khcdvocp51cf" path="res://scripts/DragAndDrop.cs" id="5_p57ef"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p57ef"]
-size = Vector2(94, 90)
+[ext_resource type="Script" uid="uid://khcdvocp51cf" path="res://Scripts/DragAndDrop.cs" id="5_p57ef"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_u5sy4"]
 font_size = 29
@@ -19,26 +15,9 @@ size = Vector2(418.529, 504.693)
 [node name="Game" type="Node2D" unique_id=1111423664]
 
 [node name="Grid" parent="." unique_id=446653954 instance=ExtResource("5_iywne")]
-position = Vector2(183, 98)
 
-[node name="ItemManager" type="Node2D" parent="." unique_id=1937314980]
-script = ExtResource("2_s0nni")
-itemsScene = ExtResource("3_s0nni")
-
-[node name="Button" type="Button" parent="ItemManager" unique_id=417803588]
-anchors_preset = -1
-offset_left = 1119.0
-offset_top = 526.0
-offset_right = 1142.0
-offset_bottom = 626.0
-grow_vertical = 0
-text = "[>"
-
-[node name="Area2D" type="Area2D" parent="ItemManager" unique_id=1317911334]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemManager/Area2D" unique_id=1536218106]
-position = Vector2(1063, 574)
-shape = SubResource("RectangleShape2D_p57ef")
+[node name="ItemManager" parent="." unique_id=571025654 instance=ExtResource("2_78awf")]
+position = Vector2(1190, 653)
 
 [node name="Paper" type="Sprite2D" parent="." unique_id=1700458966]
 position = Vector2(967, 183.00002)

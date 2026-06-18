@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dnsm41rxgb3e1"]
+
+[ext_resource type="Script" uid="uid://ddyhyxfbfx1pm" path="res://Scripts/ItemManeger.cs" id="1_55yk3"]
+[ext_resource type="PackedScene" uid="uid://srmjpnnh44yi" path="res://scenes/Items.tscn" id="2_yfgwl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yfgwl"]
+size = Vector2(94, 90)
+
+[node name="ItemManager" type="Node2D" unique_id=571025654]
+script = ExtResource("1_55yk3")
+itemsScene = ExtResource("2_yfgwl")
+
+[node name="Button" type="Button" parent="." unique_id=2072341294]
+anchors_preset = -1
+offset_left = 53.0
+offset_top = -50.0
+offset_right = 76.0
+offset_bottom = 50.0
+grow_vertical = 0
+text = "[>"
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=238476562]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=171367499]
+shape = SubResource("RectangleShape2D_yfgwl")
