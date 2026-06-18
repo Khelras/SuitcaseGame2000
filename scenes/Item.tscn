@@ -5,9 +5,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hm0qy"]
 size = Vector2(32, 32)
 
-[node name="ItemSprite2D" type="Sprite2D" unique_id=1332733576]
+[node name="Item" type="Sprite2D" unique_id=1332733576]
 script = ExtResource("1_j3wwg")
-GirdCellSize = Vector2i(32, 32)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1315279913]
 
