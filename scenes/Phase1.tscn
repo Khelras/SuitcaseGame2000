@@ -7,6 +7,13 @@
 [ext_resource type="Script" uid="uid://bnunogho8o4nc" path="res://scripts/ItemHoverUI.cs" id="3_57w61"]
 [ext_resource type="Texture2D" uid="uid://lwdl0y8rdqmc" path="res://assets/Photo_Asset_One.png" id="4_khfs5"]
 [ext_resource type="Texture2D" uid="uid://ctv2wt4c5nmn3" path="res://assets/Photo_Asset_Two.png" id="5_424rd"]
+[ext_resource type="Texture2D" uid="uid://dvrq2mruokkxo" path="res://assets/Pants_Asset_Two.png" id="6_sdhya"]
+[ext_resource type="Texture2D" uid="uid://lsv0nm0m8ib8" path="res://assets/Book_Asset.png" id="8_57w61"]
+[ext_resource type="Texture2D" uid="uid://b0fnasry5ehpn" path="res://assets/Bunny_Asset.png" id="9_ceosh"]
+[ext_resource type="Texture2D" uid="uid://drbadsl7g1trv" path="res://assets/Computer_Asset.png" id="11_lj880"]
+[ext_resource type="Texture2D" uid="uid://b4x1ii4uk0pbq" path="res://assets/Old Photo.png" id="12_378hi"]
+[ext_resource type="Texture2D" uid="uid://t3dktaphlnkq" path="res://assets/ShirtStack.png" id="13_tc2r1"]
+[ext_resource type="Texture2D" uid="uid://ciyiriakxep4u" path="res://assets/Watch_Asset.png" id="14_lj880"]
 
 [node name="Phase1" type="Node2D" unique_id=691362977]
 
@@ -61,25 +68,101 @@ offset_right = 40.0
 offset_bottom = 23.0
 metadata/_edit_use_anchors_ = true
 
-[node name="Item" parent="." unique_id=1332733576 groups=["items"] instance=ExtResource("2_uyvlg")]
-position = Vector2(746, 337)
+[node name="Pants1" parent="." unique_id=1332733576 groups=["items"] instance=ExtResource("2_uyvlg")]
+position = Vector2(876, 243)
 texture = ExtResource("3_5ssih")
 GridCellSize = Vector2i(32, 32)
 ItemSizeByCell = Vector2i(4, 8)
-ItemName = "pantaloonies"
-ItemDescription = "Bimbimbambam"
+ItemName = "Pants"
+ItemDescription = "Pants – A garment worn on the lower body that covers each leg separately, 
+providing comfort, protection, and style."
 Catagory = 3
 
-[node name="Item2" parent="." unique_id=38418703 groups=["items"] instance=ExtResource("2_uyvlg")]
-position = Vector2(883, 612)
+[node name="Pants2" parent="." unique_id=81431306 groups=["items"] instance=ExtResource("2_uyvlg")]
+position = Vector2(559, 272)
+texture = ExtResource("6_sdhya")
+GridCellSize = Vector2i(32, 32)
+ItemSizeByCell = Vector2i(4, 8)
+ItemName = "Old Photo"
+ItemDescription = "Pants – A garment worn on the lower body that covers each leg separately, 
+providing comfort, protection, and style."
+Catagory = 3
+
+[node name="Beach Photo" parent="." unique_id=38418703 groups=["items"] instance=ExtResource("2_uyvlg")]
+position = Vector2(916, 455)
 texture = ExtResource("4_khfs5")
 GridCellSize = Vector2i(32, 32)
 ItemSizeByCell = Vector2i(4, 4)
-ItemName = "Botosbbinted"
-ItemDescription = "wenimechainthesuma"
+ItemName = "Beach Photo"
+ItemDescription = "Photo of You at the Beach – A photograph capturing you at the beach, 
+preserving a memory of your time by the sea."
+Catagory = 1
 
-[node name="Item3" parent="." unique_id=1784696075 groups=["items"] instance=ExtResource("2_uyvlg")]
-position = Vector2(1060, 363)
+[node name="Dinner Photo" parent="." unique_id=1784696075 groups=["items"] instance=ExtResource("2_uyvlg")]
+position = Vector2(1153, 420)
 texture = ExtResource("5_424rd")
 GridCellSize = Vector2i(32, 32)
 ItemSizeByCell = Vector2i(4, 4)
+ItemName = "Dinner Photo"
+ItemDescription = "Family Dinner – A photograph capturing your family gathered together 
+during a shared meal, preserving a memorable moment."
+Catagory = 1
+
+[node name="Book" parent="." unique_id=991031337 groups=["items"] instance=ExtResource("2_uyvlg")]
+position = Vector2(1086, 223)
+texture = ExtResource("8_57w61")
+GridCellSize = Vector2i(32, 32)
+ItemSizeByCell = Vector2i(4, 6)
+ItemName = "Book"
+ItemDescription = "Book – The Flying Piper – A storybook that appears to tell the tale of a flying dragon, 
+likely featuring adventure and fantasy themes."
+Catagory = 1
+
+[node name="Stuffed Toy" parent="." unique_id=617910663 groups=["items"] instance=ExtResource("2_uyvlg")]
+position = Vector2(721, 234)
+texture = ExtResource("9_ceosh")
+GridCellSize = Vector2i(32, 32)
+ItemSizeByCell = Vector2i(4, 6)
+ItemName = "Stuffed Toy"
+ItemDescription = "Childhood Stuffed Bunny – A well-loved plush bunny kept from childhood."
+Catagory = 1
+
+[node name="Laptop" parent="." unique_id=1512338788 groups=["items"] instance=ExtResource("2_uyvlg")]
+position = Vector2(734, 496)
+texture = ExtResource("11_lj880")
+GridCellSize = Vector2i(32, 32)
+ItemSizeByCell = Vector2i(6, 6)
+ItemName = "Laptop"
+ItemDescription = "Laptop – A portable computer used for tasks such as work, studying, 
+gaming, browsing the internet, and entertainment."
+Catagory = 3
+
+[node name="Old Photo" parent="." unique_id=919482355 groups=["items"] instance=ExtResource("2_uyvlg")]
+position = Vector2(1057, 493)
+texture = ExtResource("12_378hi")
+GridCellSize = Vector2i(32, 32)
+ItemSizeByCell = Vector2i(5, 6)
+ItemName = "Old Photo"
+ItemDescription = "Old Family Photo – A vintage photograph of your family that preserves 
+cherished memories and moments from the past."
+Catagory = 2
+
+[node name="Stack of Shirts" parent="." unique_id=429634278 groups=["items"] instance=ExtResource("2_uyvlg")]
+position = Vector2(702, 236)
+texture = ExtResource("13_tc2r1")
+GridCellSize = Vector2i(32, 32)
+ItemSizeByCell = Vector2i(4, 4)
+ItemName = "Stack of Shirts"
+ItemDescription = "Stack of Shirts – A neatly folded pile of shirts stored for 
+everyday wear or organization."
+Catagory = 3
+
+[node name="Watch" parent="." unique_id=668775312 groups=["items"] instance=ExtResource("2_uyvlg")]
+position = Vector2(446, 527)
+texture = ExtResource("14_lj880")
+GridCellSize = Vector2i(32, 32)
+ItemSizeByCell = Vector2i(3, 5)
+ItemName = "Pocket Watch"
+ItemDescription = "Pocket Watch – A portable timepiece designed to be carried in a pocket, 
+often valued for its classic design and craftsmanship."
+Catagory = 2
