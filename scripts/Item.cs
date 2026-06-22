@@ -5,11 +5,28 @@ using System.Collections.Generic;
 ///     A draggable inventory item that snaps to a tile grid when dropped.
 ///     Handles its own drag input, cell occupancy, and placement validation.
 /// </summary>
+
+public enum ItemCatagory
+{
+    Survival,
+    Sentimental,
+    CulturalIdentity,
+    Functional
+}
+
 public partial class Item : Sprite2D
 {
     [ExportGroup("Item Configuration")]
     [Export] public Vector2I GridCellSize { get; private set; }
     [Export] public Vector2I ItemSizeByCell { get; private set; }
+
+    //Export ItemName, ItemDescription, and ItemCatagory for use in the UI when an item is selected
+    [Export] public string ItemName { get; private set; } = "Unnamed Item";
+    [Export(PropertyHint.MultilineText)] public string ItemDescription { get; private set; } = "No Description";
+    [Export] public ItemCatagory Catagory { get; private set; }
+
+    //Store if the item is packed, its packed if its placed
+    public bool IsPacked => hasPlaced;
 
     // References
     private Grid grid;
@@ -62,6 +79,9 @@ public partial class Item : Sprite2D
 
         area = GetNode<Area2D>("Area2D");
         area.InputEvent += OnInputEvent;
+
+        area.MouseEntered += OnMouseEntered;
+        area.MouseExited += OnMouseExited;
 
         // Grid is found via group so Items don't need a direct scene reference
         grid = GetTree().GetFirstNodeInGroup("grid") as Grid;
@@ -179,5 +199,16 @@ public partial class Item : Sprite2D
             if (!grid.IsCellInBounds(cell) || grid.IsCellOccupied(cell))
                 return false;
         return true;
+    }
+
+    private void OnMouseEntered()
+    {
+        ItemHoverUI hoverUI = GetTree().GetFirstNodeInGroup("item_hover_ui") as ItemHoverUI;
+        hoverUI?.ShowItem(this);
+    }
+    private void OnMouseExited()
+    {
+        ItemHoverUI hoverUI = GetTree().GetFirstNodeInGroup("item_hover_ui") as ItemHoverUI;
+        hoverUI?.HideItem(this);
     }
 }

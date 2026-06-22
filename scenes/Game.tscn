@@ -17,13 +17,13 @@ GridCellSize = Vector2i(32, 32)
 ItemSizeByCell = Vector2i(4, 8)
 
 [node name="Item2" parent="." unique_id=1167000266 instance=ExtResource("2_s0nni")]
-position = Vector2(822, 524)
+position = Vector2(843, 572)
 texture = ExtResource("4_kiw3p")
 GridCellSize = Vector2i(32, 32)
 ItemSizeByCell = Vector2i(4, 4)
 
 [node name="Item3" parent="." unique_id=1083760439 instance=ExtResource("2_s0nni")]
-position = Vector2(964, 320)
+position = Vector2(1019, 338)
 texture = ExtResource("5_400sg")
 GridCellSize = Vector2i(32, 32)
 ItemSizeByCell = Vector2i(4, 4)
