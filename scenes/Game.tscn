@@ -3,27 +3,63 @@
 [ext_resource type="PackedScene" uid="uid://bq2elwnpjopcb" path="res://scenes/Item.tscn" id="2_s0nni"]
 [ext_resource type="Texture2D" uid="uid://vyjwadoa8lu8" path="res://assets/Pants_Asset_One.png" id="3_aug50"]
 [ext_resource type="Texture2D" uid="uid://lwdl0y8rdqmc" path="res://assets/Photo_Asset_One.png" id="4_kiw3p"]
+[ext_resource type="AudioStream" uid="uid://dxwjr8vnq5jpb" path="res://sfx/mixkit-hard-pop-click-2364.wav" id="4_qy1jj"]
 [ext_resource type="Texture2D" uid="uid://ctv2wt4c5nmn3" path="res://assets/Photo_Asset_Two.png" id="5_400sg"]
+[ext_resource type="AudioStream" uid="uid://cfa5wc6dxhkfl" path="res://sfx/mixkit-long-pop-2358.wav" id="5_g4kob"]
 [ext_resource type="PackedScene" uid="uid://ckryw7f5iaccw" path="res://scenes/Grid.tscn" id="5_iywne"]
+[ext_resource type="AudioStream" uid="uid://cftf3yiartta6" path="res://sfx/mixkit-message-pop-alert-2354.mp3" id="6_400sg"]
 
 [node name="Game" type="Node2D" unique_id=1111423664]
 
 [node name="Grid" parent="." unique_id=446653954 instance=ExtResource("5_iywne")]
 
 [node name="Item" parent="." unique_id=1332733576 instance=ExtResource("2_s0nni")]
-position = Vector2(814, 380)
+position = Vector2(1030, 493)
 texture = ExtResource("3_aug50")
 GridCellSize = Vector2i(32, 32)
 ItemSizeByCell = Vector2i(4, 8)
 
+[node name="SfxGrab" type="AudioStreamPlayer2D" parent="Item" unique_id=1924624758]
+stream = ExtResource("4_qy1jj")
+volume_db = -16.0
+
+[node name="SfxDrop" type="AudioStreamPlayer2D" parent="Item" unique_id=1321380789]
+stream = ExtResource("5_g4kob")
+volume_db = -16.0
+
+[node name="SfxInsideTheGrid" type="AudioStreamPlayer2D" parent="Item" unique_id=1318069151]
+stream = ExtResource("6_400sg")
+
 [node name="Item2" parent="." unique_id=1167000266 instance=ExtResource("2_s0nni")]
-position = Vector2(822, 524)
+position = Vector2(1149, 617)
 texture = ExtResource("4_kiw3p")
 GridCellSize = Vector2i(32, 32)
 ItemSizeByCell = Vector2i(4, 4)
 
+[node name="SfxGrab" type="AudioStreamPlayer2D" parent="Item2" unique_id=2131887456]
+stream = ExtResource("4_qy1jj")
+volume_db = -16.0
+
+[node name="SfxDrop" type="AudioStreamPlayer2D" parent="Item2" unique_id=1421224997]
+stream = ExtResource("5_g4kob")
+volume_db = -16.0
+
+[node name="SfxInsideTheGrid" type="AudioStreamPlayer2D" parent="Item2" unique_id=270227741]
+stream = ExtResource("6_400sg")
+
 [node name="Item3" parent="." unique_id=1083760439 instance=ExtResource("2_s0nni")]
-position = Vector2(964, 320)
+position = Vector2(1190, 563)
 texture = ExtResource("5_400sg")
 GridCellSize = Vector2i(32, 32)
 ItemSizeByCell = Vector2i(4, 4)
+
+[node name="SfxGrab" type="AudioStreamPlayer2D" parent="Item3" unique_id=1672653030]
+stream = ExtResource("4_qy1jj")
+volume_db = -16.0
+
+[node name="SfxDrop" type="AudioStreamPlayer2D" parent="Item3" unique_id=1798908294]
+stream = ExtResource("5_g4kob")
+volume_db = -16.0
+
+[node name="SfxInsideTheGrid" type="AudioStreamPlayer2D" parent="Item3" unique_id=1187244395]
+stream = ExtResource("6_400sg")
