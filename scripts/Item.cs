@@ -20,6 +20,9 @@ public partial class Item : Sprite2D
     [Export] public Vector2I GridCellSize { get; private set; }
     [Export] public Vector2I ItemSizeByCell { get; private set; }
 
+    private AudioStreamPlayer2D sfxGrab;
+    private AudioStreamPlayer2D sfxDrop;
+    private AudioStreamPlayer2D sfxInsideGrid;
     //Export ItemName, ItemDescription, and ItemCatagory for use in the UI when an item is selected
     [Export] public string ItemName { get; private set; } = "Unnamed Item";
     [Export(PropertyHint.MultilineText)] public string ItemDescription { get; private set; } = "No Description";
@@ -42,7 +45,8 @@ public partial class Item : Sprite2D
     private List<Vector2I> currentCells = new List<Vector2I>();
     private List<Vector2I> previousCells = new List<Vector2I>();
     private bool hasPlaced = false;
-
+    private bool wasInsideGrid = false;
+    private Vector2I currentCellPosition = Vector2I.Zero;
     // ==================================================
     //  Lifecycle
     // ==================================================
@@ -80,6 +84,9 @@ public partial class Item : Sprite2D
         area = GetNode<Area2D>("Area2D");
         area.InputEvent += OnInputEvent;
 
+        sfxGrab = GetNode<AudioStreamPlayer2D>("SfxGrab");
+        sfxDrop = GetNode<AudioStreamPlayer2D>("SfxDrop");
+        sfxInsideGrid = GetNode<AudioStreamPlayer2D>("SfxInsideTheGrid");
         area.MouseEntered += OnMouseEntered;
         area.MouseExited += OnMouseExited;
 
@@ -98,11 +105,23 @@ public partial class Item : Sprite2D
         Vector2 topLeft = GetWorldTopLeft();
         currentCells = grid.GetCellsForItem(topLeft, ItemSizeByCell);
 
+        bool isInsideGird = currentCells.Count > 0;
+        //Play only when Inside the cell and cell has changed
+        if (isInsideGird && currentCells[0] != currentCellPosition) {
+            sfxInsideGrid.Play();
+            currentCellPosition = currentCells[0];
+        }
+        if (!isInsideGird) { //reset when its outside 
+
+            currentCellPosition = Vector2I.Zero;
+        }
+        wasInsideGrid = isInsideGird;
         // Hide preview when outside the grid, show green/red when inside
         if (currentCells.Count == 0)
             grid.HidePreviewCells();
         else
             grid.ShowPreviewCells(currentCells, AreCellsValid(currentCells));
+        
     }
 
     // ==================================================
@@ -115,9 +134,15 @@ public partial class Item : Sprite2D
         if (mouseButton.ButtonIndex != MouseButton.Left) return;
 
         if (mouseButton.Pressed)
+        {
             PickUp();
-        else
+            sfxGrab.Play();
+        }
+        else {
             Drop();
+            sfxDrop.Play();
+        }
+            
     }
 
     private void PickUp()
@@ -144,6 +169,7 @@ public partial class Item : Sprite2D
         currentCells = grid.GetCellsForItem(topLeft, ItemSizeByCell);
 
         bool onGrid = currentCells.Count > 0;
+        
         bool valid = onGrid && AreCellsValid(currentCells);
 
         if (valid)
