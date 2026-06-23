@@ -62,7 +62,7 @@ public partial class PhaseTwoEvent : Control
         {
             promptLabel.Text = "On the bus ride home, a stranger yells at you saying to 'go back to your country'\n" +
                 "\nA: Ignore them." +
-                "\nB: Take comfort in a cultural item.";
+                "\nB: Find an item to take comfort in.";
         }
 
         // Fade Into Prompt

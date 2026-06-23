@@ -56,6 +56,12 @@ public partial class PhaseTwoManager : Node
 			}
 		}
 
+        // DEBUG
+        GD.Print(survivalItems.Count);
+        GD.Print(sentimentalItems.Count);
+        GD.Print(culturalItems.Count);
+        GD.Print(functionalItems.Count);
+
         // Progress Bars
         healthBar.MaxValue = maxHealth;
         shelterBar.MaxValue = maxShelter;
@@ -63,12 +69,12 @@ public partial class PhaseTwoManager : Node
         healthBar.MinValue = 0;
         shelterBar.MinValue = 0;
         belongingBar.MinValue = 0;
-        healthBar.Value = maxHealth;
-        shelterBar.Value = maxShelter;
-        belongingBar.Value = maxBelonging;
+        healthBar.Value = Math.Min(maxHealth, (maxHealth - dailyDecrement) + survivalItems.Count);
+        shelterBar.Value = Math.Min(maxShelter, (maxShelter - dailyDecrement) + functionalItems.Count);
+        belongingBar.Value = Math.Min(maxBelonging, (maxBelonging - dailyDecrement) + sentimentalItems.Count + culturalItems.Count);
 
         // Fade into Morning
-        phaseTwoMorning.dayLabel.Text = $"Day {day}";
+        phaseTwoMorning.dayLabel.Text = $"Day {day}:\nNew Beginnings";
         phaseTwoMorning.FadeInMorning();
     }
 
@@ -231,17 +237,42 @@ public partial class PhaseTwoManager : Node
         // Otherwise, Next Day
         day++;
 
-        // Check if Today is the Last Day
-        if (day > maxDays)
+        if (day == 2)
         {
-            phaseTwoMorning.dayLabel.Text = $"The End...";
+            phaseTwoMorning.dayLabel.Text = $"Day {day}:\nI'll be okay";
+        }
+        else if (day == 3)
+        {
+            phaseTwoMorning.dayLabel.Text = $"Day {day}:\nI miss home";
+        }
+        else if (day > maxDays) // Check if Today is the Last Day
+        {
+            string endTitle = string.Empty;
+            if (healthBar.Value >= shelterBar.Value && healthBar.Value >= belongingBar.Value)
+            {
+                endTitle = "At least I'm surviving.";
+            }
+            else if (shelterBar.Value >= healthBar.Value && shelterBar.Value >= belongingBar.Value)
+            {
+                endTitle = "At least I have shelter.";
+            }
+            else if (belongingBar.Value >= healthBar.Value && belongingBar.Value >= shelterBar.Value)
+            {
+                endTitle = "I'm doing just fine.";
+            }
+            else
+            {
+                endTitle = "I don't belong here...";
+            }
+
+            phaseTwoMorning.dayLabel.Text = "The End:\n" + endTitle;
+            phaseTwoMorning.dayLabel.LabelSettings.FontSize = 60;
             phaseTwoMorning.continueButton.GetNode<Label>("Label").Text = "Exit";
             phaseTwoMorning.FadeInMorning();
             return;
         }
 
         // Fade into Morning
-        phaseTwoMorning.dayLabel.Text = $"Day {day}";
         phaseTwoMorning.FadeInMorning();
     }
 }
