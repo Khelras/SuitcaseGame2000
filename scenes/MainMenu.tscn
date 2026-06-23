@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dsqrwc1lev07j"]
 
 [ext_resource type="Script" uid="uid://bu0njw25o4icq" path="res://scripts/MainMenu.cs" id="1_yqorp"]
+[ext_resource type="PackedScene" uid="uid://g2u45duvx6at" path="res://scenes/BackgroundMusic.tscn" id="2_0ykhv"]
 
 [node name="MainMenu" type="Control" unique_id=264811829]
 layout_mode = 3
@@ -48,6 +49,9 @@ offset_bottom = 49.0
 theme_override_font_sizes/font_size = 32
 text = "Quit
 "
+
+[node name="BackgroundMusic" parent="." unique_id=217594945 instance=ExtResource("2_0ykhv")]
+volume_db = -15.0
 
 [connection signal="pressed" from="Start_Button" to="." method="OnStartPressed"]
 [connection signal="pressed" from="Quit_Button" to="." method="OnExitPressed"]
