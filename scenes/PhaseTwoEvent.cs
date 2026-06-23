@@ -48,36 +48,31 @@ public partial class PhaseTwoEvent : Control
         // Prompt Text
         if (day == 1) // Day 1
         {
-            promptLabel.Text = "Day 1 Prompt...";
+            promptLabel.Text = "Your landlord has been hinting about kicking you out...\n" +
+                "\nA: Offer to pay more." +
+                "\nB: Start looking for another place.";
         }
         else if (day == 2) // Day 2
         {
-            promptLabel.Text = "Day 2 Prompt...";
+            promptLabel.Text = "Someone at the factory says that you can work extra hours if you accept an unsafe task...\n" +
+                "\nA: Accept offer, I need the money." +
+                "\nB: Reject offer, it is too risky...";
         }
         else if (day == 3) // Day 3
         {
-            promptLabel.Text = "Day 3 Prompt...";
+            promptLabel.Text = "On the bus ride home, a stranger yells at you saying to 'go back to your country'\n" +
+                "\nA: Ignore them." +
+                "\nB: Take comfort in a cultural item.";
         }
 
         // Fade Into Prompt
         PromptFadeIn();
     }
 
-    public void ShowResult(int day)
+    public void ShowResult(string resultText)
     {
         // Result Text
-        if (day == 1) // Day 1
-        {
-            resultLabel.Text = "Day 1 Result...";
-        }
-        else if (day == 2) // Day 2
-        {
-            resultLabel.Text = "Day 2 Result...";
-        }
-        else if (day == 3) // Day 3
-        {
-            resultLabel.Text = "Day 3 Result...";
-        }
+        resultLabel.Text = resultText;
 
         // Fade Into Result
         ResultFadeIn();
@@ -132,14 +127,14 @@ public partial class PhaseTwoEvent : Control
 
     public async void ResultFadeOut(float duration = 1f)
     {
+        // Disable Buttons
+        nextDayButton.Disabled = true;
+
         // Fade Out
         Tween tween = CreateTween();
         tween.TweenProperty(result, "modulate:a", 0.0f, duration);
         await ToSignal(tween, Tween.SignalName.Finished);
         result.Visible = false;
-
-        // Disable Buttons
-        nextDayButton.Disabled = true;
 
         // Emit Signal
         EmitSignal(SignalName.EventResultFadeOutComplete);

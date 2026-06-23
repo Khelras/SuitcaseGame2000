@@ -127,6 +127,7 @@ grow_vertical = 2
 color = Color(0.060530342, 0.06053035, 0.060530327, 1)
 
 [node name="Morning" type="Control" parent="CanvasLayer" unique_id=1168666572 node_paths=PackedStringArray("dayLabel", "continueButton")]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -425,7 +426,7 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -376.0
-offset_top = -114.712006
+offset_top = -191.0
 offset_right = 376.0
 offset_bottom = 6.0025024
 grow_horizontal = 2
