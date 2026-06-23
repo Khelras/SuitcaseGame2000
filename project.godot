@@ -34,9 +34,10 @@ project/assembly_name="SuitcaseGame2000"
 
 folder_colors={
 "res://assets/": "red",
-"res://scenes/": "orange",
-"res://scripts/": "pink",
-"res://sfx/": "green"
+"res://fonts/": "orange",
+"res://scenes/": "yellow",
+"res://scripts/": "green",
+"res://sfx/": "teal"
 }
 
 [global_group]
