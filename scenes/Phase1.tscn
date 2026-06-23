@@ -17,7 +17,7 @@
 
 [node name="Phase1" type="Node2D" unique_id=691362977]
 
-[node name="Node" type="Node" parent="." unique_id=298203584]
+[node name="ItemManager" type="Node" parent="." unique_id=298203584]
 script = ExtResource("1_424rd")
 
 [node name="Grid" parent="." unique_id=446653954 instance=ExtResource("1_5ssih")]
@@ -69,7 +69,7 @@ offset_bottom = 23.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Pants1" parent="." unique_id=1332733576 groups=["items"] instance=ExtResource("2_uyvlg")]
-position = Vector2(876, 243)
+position = Vector2(1096, 262.5)
 texture = ExtResource("3_5ssih")
 GridCellSize = Vector2i(32, 32)
 ItemSizeByCell = Vector2i(4, 8)
@@ -79,7 +79,7 @@ providing comfort, protection, and style."
 Catagory = 3
 
 [node name="Pants2" parent="." unique_id=81431306 groups=["items"] instance=ExtResource("2_uyvlg")]
-position = Vector2(559, 272)
+position = Vector2(968, 278)
 texture = ExtResource("6_sdhya")
 GridCellSize = Vector2i(32, 32)
 ItemSizeByCell = Vector2i(4, 8)
@@ -89,7 +89,7 @@ providing comfort, protection, and style."
 Catagory = 3
 
 [node name="Beach Photo" parent="." unique_id=38418703 groups=["items"] instance=ExtResource("2_uyvlg")]
-position = Vector2(916, 455)
+position = Vector2(972, 442.5)
 texture = ExtResource("4_khfs5")
 GridCellSize = Vector2i(32, 32)
 ItemSizeByCell = Vector2i(4, 4)
@@ -99,7 +99,7 @@ preserving a memory of your time by the sea."
 Catagory = 1
 
 [node name="Dinner Photo" parent="." unique_id=1784696075 groups=["items"] instance=ExtResource("2_uyvlg")]
-position = Vector2(1153, 420)
+position = Vector2(1108, 409.5)
 texture = ExtResource("5_424rd")
 GridCellSize = Vector2i(32, 32)
 ItemSizeByCell = Vector2i(4, 4)
@@ -109,7 +109,7 @@ during a shared meal, preserving a memorable moment."
 Catagory = 1
 
 [node name="Book" parent="." unique_id=991031337 groups=["items"] instance=ExtResource("2_uyvlg")]
-position = Vector2(1086, 223)
+position = Vector2(999, 258)
 texture = ExtResource("8_57w61")
 GridCellSize = Vector2i(32, 32)
 ItemSizeByCell = Vector2i(4, 6)
@@ -119,7 +119,7 @@ likely featuring adventure and fantasy themes."
 Catagory = 1
 
 [node name="Stuffed Toy" parent="." unique_id=617910663 groups=["items"] instance=ExtResource("2_uyvlg")]
-position = Vector2(721, 234)
+position = Vector2(1039, 265.5)
 texture = ExtResource("9_ceosh")
 GridCellSize = Vector2i(32, 32)
 ItemSizeByCell = Vector2i(4, 6)
@@ -128,7 +128,7 @@ ItemDescription = "Childhood Stuffed Bunny – A well-loved plush bunny kept fro
 Catagory = 1
 
 [node name="Laptop" parent="." unique_id=1512338788 groups=["items"] instance=ExtResource("2_uyvlg")]
-position = Vector2(734, 496)
+position = Vector2(1040, 340.5)
 texture = ExtResource("11_lj880")
 GridCellSize = Vector2i(32, 32)
 ItemSizeByCell = Vector2i(6, 6)
@@ -138,7 +138,7 @@ gaming, browsing the internet, and entertainment."
 Catagory = 3
 
 [node name="Old Photo" parent="." unique_id=919482355 groups=["items"] instance=ExtResource("2_uyvlg")]
-position = Vector2(1057, 493)
+position = Vector2(1057, 288.5)
 texture = ExtResource("12_378hi")
 GridCellSize = Vector2i(32, 32)
 ItemSizeByCell = Vector2i(5, 6)
@@ -148,7 +148,7 @@ cherished memories and moments from the past."
 Catagory = 2
 
 [node name="Stack of Shirts" parent="." unique_id=429634278 groups=["items"] instance=ExtResource("2_uyvlg")]
-position = Vector2(702, 236)
+position = Vector2(1083, 233.5)
 texture = ExtResource("13_tc2r1")
 GridCellSize = Vector2i(32, 32)
 ItemSizeByCell = Vector2i(4, 4)
@@ -158,7 +158,7 @@ everyday wear or organization."
 Catagory = 3
 
 [node name="Watch" parent="." unique_id=668775312 groups=["items"] instance=ExtResource("2_uyvlg")]
-position = Vector2(446, 527)
+position = Vector2(1083, 309.5)
 texture = ExtResource("14_lj880")
 GridCellSize = Vector2i(32, 32)
 ItemSizeByCell = Vector2i(3, 5)
