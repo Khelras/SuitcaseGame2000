@@ -1,12 +1,10 @@
 using Godot;
 using System.Collections.Generic;
 
-public class ItemID
-{
-    public string name;
-    public ItemCatagory catagory;
-    public bool isPacked;
-}
+/// <summary>
+///     A draggable inventory item that snaps to a tile grid when dropped.
+///     Handles its own drag input, cell occupancy, and placement validation.
+/// </summary>
 
 public enum ItemCatagory
 {
@@ -16,10 +14,6 @@ public enum ItemCatagory
     Functional
 }
 
-/// <summary>
-///     A draggable inventory item that snaps to a tile grid when dropped.
-///     Handles its own drag input, cell occupancy, and placement validation.
-/// </summary>
 public partial class Item : Sprite2D
 {
     [ExportGroup("Item Configuration")]
@@ -29,7 +23,6 @@ public partial class Item : Sprite2D
     private AudioStreamPlayer2D sfxGrab;
     private AudioStreamPlayer2D sfxDrop;
     private AudioStreamPlayer2D sfxInsideGrid;
-
     //Export ItemName, ItemDescription, and ItemCatagory for use in the UI when an item is selected
     [Export] public string ItemName { get; private set; } = "Unnamed Item";
     [Export(PropertyHint.MultilineText)] public string ItemDescription { get; private set; } = "No Description";
@@ -54,7 +47,6 @@ public partial class Item : Sprite2D
     private bool hasPlaced = false;
     private bool wasInsideGrid = false;
     private Vector2I currentCellPosition = Vector2I.Zero;
-
     // ==================================================
     //  Lifecycle
     // ==================================================

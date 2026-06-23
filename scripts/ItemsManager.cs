@@ -1,9 +1,10 @@
 using Godot;
+using System;
 using System.Collections.Generic;
 
 public partial class ItemsManager : Node
 {
-    public List<Item> GetAllItems()
+	public List<Item> GetAllItems()
 	{
 		List<Item> items = new();
 
@@ -17,20 +18,6 @@ public partial class ItemsManager : Node
 		return items;
 	}
 
-	public List<Item> GetPackedItems()
-	{
-		List<Item> packedItems = new();
-
-		foreach(Item item in GetAllItems()) 
-		{
-			if (item.IsPacked == true)
-			{
-				packedItems.Add(item);
-			}
-		}
-		return packedItems;
-    }
-
 	public List<Item> GetLeftBehindItems()
 	{
 		List<Item> leftBehindItems = new();
@@ -43,7 +30,7 @@ public partial class ItemsManager : Node
 			}
 		}
 		return leftBehindItems;
-
+    
 	}
 
 	// Called when the node enters the scene tree for the first time.
