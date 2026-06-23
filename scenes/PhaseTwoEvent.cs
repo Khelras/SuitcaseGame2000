@@ -1,6 +1,5 @@
 using Godot;
 using System;
-using static Godot.HttpRequest;
 
 public partial class PhaseTwoEvent : Control
 {
@@ -13,6 +12,7 @@ public partial class PhaseTwoEvent : Control
     [ExportGroup("Result")]
     [Export] Control result;
     [Export] Label resultLabel;
+    [Export] public Button nextDayButton;
 
     // Signals
     [Signal] public delegate void EventPromptFadeInCompleteEventHandler();
@@ -38,22 +38,48 @@ public partial class PhaseTwoEvent : Control
 	{
 	}
 
-	public void StartEvent()
+	public void StartEvent(int day)
 	{
         // Visibility
         Visible = true;
         prompt.Visible = true;
         result.Visible = false;
 
-        // Start with Prompt
-        promptLabel.Text = "Example question incoming...?";
+        // Prompt Text
+        if (day == 1) // Day 1
+        {
+            promptLabel.Text = "Day 1 Prompt...";
+        }
+        else if (day == 2) // Day 2
+        {
+            promptLabel.Text = "Day 2 Prompt...";
+        }
+        else if (day == 3) // Day 3
+        {
+            promptLabel.Text = "Day 3 Prompt...";
+        }
+
+        // Fade Into Prompt
         PromptFadeIn();
     }
 
-    public void ShowResult()
+    public void ShowResult(int day)
     {
-        // Result
-        resultLabel.Text = "Example result...";
+        // Result Text
+        if (day == 1) // Day 1
+        {
+            resultLabel.Text = "Day 1 Result...";
+        }
+        else if (day == 2) // Day 2
+        {
+            resultLabel.Text = "Day 2 Result...";
+        }
+        else if (day == 3) // Day 3
+        {
+            resultLabel.Text = "Day 3 Result...";
+        }
+
+        // Fade Into Result
         ResultFadeIn();
     }
 
@@ -97,6 +123,9 @@ public partial class PhaseTwoEvent : Control
         tween.TweenProperty(result, "modulate:a", 1.0f, duration);
         await ToSignal(tween, Tween.SignalName.Finished);
 
+        // Enable Buttons
+        nextDayButton.Disabled = false;
+
         // Emit Signal
         EmitSignal(SignalName.EventResultFadeInComplete);
     }
@@ -108,6 +137,9 @@ public partial class PhaseTwoEvent : Control
         tween.TweenProperty(result, "modulate:a", 0.0f, duration);
         await ToSignal(tween, Tween.SignalName.Finished);
         result.Visible = false;
+
+        // Disable Buttons
+        nextDayButton.Disabled = true;
 
         // Emit Signal
         EmitSignal(SignalName.EventResultFadeOutComplete);

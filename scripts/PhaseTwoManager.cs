@@ -13,7 +13,7 @@ public partial class PhaseTwoManager : Node
     public int belonging;
 
 	// Days
-	public const int totalDays = 3;
+	public const int maxDays = 3;
     public int day = 1;
 
     // Items
@@ -54,7 +54,7 @@ public partial class PhaseTwoManager : Node
 
         // Fade into Morning
         phaseTwoMorning.dayLabel.Text = $"Day {day}";
-        phaseTwoMorning.FadeInMorning(2.0f);
+        phaseTwoMorning.FadeInMorning();
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -65,13 +65,13 @@ public partial class PhaseTwoManager : Node
 	private void OnContinueButtonPressed()
 	{
         // Fade Out
-        phaseTwoMorning.FadeOutMorning(1.0f);
+        phaseTwoMorning.FadeOutMorning();
 	}
 
 	private void OnMorningFadeOutComplete()
 	{
 		// Start the Event
-		phaseTwoEvent.StartEvent();
+		phaseTwoEvent.StartEvent(day);
 	}
 
     private void OnOptionA()
@@ -95,6 +95,32 @@ public partial class PhaseTwoManager : Node
 	private void OnEventPromptFadeOutComplete()
 	{
 		// Show Result
-		phaseTwoEvent.ShowResult();
+		phaseTwoEvent.ShowResult(day);
 	}
+
+    private void OnNextDayPressed()
+	{
+		// Fade Out Result
+		phaseTwoEvent.ResultFadeOut();
+    }
+
+	private void OnEventResultFadeOutComplete()
+	{
+		// Make Event Invisible
+		phaseTwoEvent.Visible = false;
+
+        // Check if Today is the Last Day
+        if (day >= maxDays)
+        {
+            // Go to Ending Scene
+            GetTree().ChangeSceneToFile("res://scenes/Ending.tscn");
+        }
+
+        // Otherwise, Next Day
+        day++;
+
+        // Fade into Morning
+        phaseTwoMorning.dayLabel.Text = $"Day {day}";
+        phaseTwoMorning.FadeInMorning();
+    }
 }

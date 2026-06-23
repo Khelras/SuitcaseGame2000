@@ -43,7 +43,7 @@ public partial class PhaseTwoMorning : Control
     public async void FadeOutMorning(double duration = 1f)
     {
         // Disable Button
-        continueButton.Disabled = false;
+        continueButton.Disabled = true;
 
         // Fade Out
         Tween tween = CreateTween();
