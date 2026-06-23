@@ -5,12 +5,10 @@ using System.Collections.Generic;
 public partial class PhaseTwoManager : Node
 {
 	// Post-Migration Stats
-	public const int maxHealth = 100;
-	public const int maxShelter = 100;
-	public const int maxBelonging = 100;
-    public int health;
-    public int shelter;
-    public int belonging;
+	public const int maxHealth = 30;
+	public const int maxShelter = 30;
+	public const int maxBelonging = 30;
+	private const int dailyDecrement = 10;
 
 	// Days
 	public const int maxDays = 3;
@@ -25,17 +23,20 @@ public partial class PhaseTwoManager : Node
 	// Game Manager
 	private GameManager game;
 
-	// Exports
-	[Export] PhaseTwoMorning phaseTwoMorning;
+	// Progress Bars
+	[ExportGroup("Progress Bars")]
+	[Export] ProgressBar healthBar;
+	[Export] ProgressBar shelterBar;
+	[Export] ProgressBar belongingBar;
+
+	// Morning and Event
+    [ExportGroup("Morning and Event")]
+    [Export] PhaseTwoMorning phaseTwoMorning;
 	[Export] PhaseTwoEvent phaseTwoEvent;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-        this.health = maxHealth;
-		this.shelter = maxShelter;
-		this.belonging = maxBelonging;
-
 		// Global Game Manager
 		game = GetNode<GameManager>("/root/GameManager");
 
@@ -51,6 +52,17 @@ public partial class PhaseTwoManager : Node
 				case ItemCatagory.Functional: { functionalItems.Add(item); } break;
 			}
 		}
+
+        // Progress Bars
+        healthBar.MaxValue = maxHealth;
+        shelterBar.MaxValue = maxShelter;
+        belongingBar.MaxValue = maxBelonging;
+        healthBar.MinValue = 0;
+        shelterBar.MinValue = 0;
+        belongingBar.MinValue = 0;
+        healthBar.Value = maxHealth;
+        shelterBar.Value = maxShelter;
+        belongingBar.Value = maxBelonging;
 
         // Fade into Morning
         phaseTwoMorning.dayLabel.Text = $"Day {day}";
@@ -77,18 +89,24 @@ public partial class PhaseTwoManager : Node
     private void OnOptionA()
     {
         // DEBUG
-        GD.Print("On Option-A Button Pressed!"); 
+        GD.Print("On Option-A Button Pressed!");
 
 		// Fade Out Prompt
-		phaseTwoEvent.PromptFadeOut();
+		healthBar.Value -= dailyDecrement;
+        shelterBar.Value -= dailyDecrement;
+        belongingBar.Value -= dailyDecrement;
+        phaseTwoEvent.PromptFadeOut();
     }
 
     private void OnOptionB()
     {
         // DEBUG
-        GD.Print("On Option-B Button Pressed!"); 
+        GD.Print("On Option-B Button Pressed!");
 
         // Fade Out Prompt
+        healthBar.Value -= dailyDecrement;
+        shelterBar.Value -= dailyDecrement;
+        belongingBar.Value -= dailyDecrement;
         phaseTwoEvent.PromptFadeOut();
     }
 
