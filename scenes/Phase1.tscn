@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://ckryw7f5iaccw" path="res://scenes/Grid.tscn" id="1_5ssih"]
 [ext_resource type="Texture2D" uid="uid://egeld5scq2sr" path="res://assets/FloorBackground.png" id="1_378hi"]
 [ext_resource type="Script" uid="uid://pru5cjj7jfmi" path="res://scripts/ItemsManager.cs" id="1_424rd"]
+[ext_resource type="Script" uid="uid://co3mp5xauaj5m" path="res://scripts/PhaseOneManager.cs" id="1_tc2r1"]
+[ext_resource type="Texture2D" uid="uid://bdcuvcrwo075h" path="res://assets/Suitcase.png" id="2_378hi"]
 [ext_resource type="PackedScene" uid="uid://bq2elwnpjopcb" path="res://scenes/Item.tscn" id="2_uyvlg"]
 [ext_resource type="Texture2D" uid="uid://vyjwadoa8lu8" path="res://assets/Pants_Asset_One.png" id="3_5ssih"]
 [ext_resource type="Script" uid="uid://bnunogho8o4nc" path="res://scripts/ItemHoverUI.cs" id="3_57w61"]
@@ -16,7 +18,13 @@
 [ext_resource type="Texture2D" uid="uid://b4x1ii4uk0pbq" path="res://assets/Old Photo.png" id="12_378hi"]
 [ext_resource type="Texture2D" uid="uid://t3dktaphlnkq" path="res://assets/ShirtStack.png" id="13_tc2r1"]
 
-[node name="Phase1" type="Node2D" unique_id=691362977]
+[node name="Phase1" type="Node2D" unique_id=691362977 node_paths=PackedStringArray("itemManager", "LeftBehindPanel", "LeftBehindImage", "LeftBehindText", "LeftBehindDescription")]
+script = ExtResource("1_tc2r1")
+itemManager = NodePath("ItemManager")
+LeftBehindPanel = NodePath("UI/LeftBehindPanel")
+LeftBehindImage = NodePath("UI/LeftBehindPanel/LeftBehindImage")
+LeftBehindText = NodePath("UI/LeftBehindPanel/LeftBehindText")
+LeftBehindDescription = NodePath("UI/LeftBehindPanel/LeftBehindDescription")
 
 [node name="FloorBackground" type="Sprite2D" parent="." unique_id=1503873916]
 position = Vector2(699, 376)
@@ -25,9 +33,23 @@ texture = ExtResource("1_378hi")
 [node name="ItemManager" type="Node" parent="." unique_id=298203584]
 script = ExtResource("1_424rd")
 
+[node name="Suitcase" type="Sprite2D" parent="." unique_id=373507674]
+position = Vector2(348.5001, 343.75003)
+scale = Vector2(0.7119141, 0.67236334)
+texture = ExtResource("2_378hi")
+
 [node name="Grid" parent="." unique_id=446653954 instance=ExtResource("1_5ssih")]
+GridPosition = Vector2(60, 20)
+GridSize = Vector2i(18, 20)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1923099759]
+
+[node name="Button" type="Button" parent="UI" unique_id=301256921]
+offset_left = 1075.0
+offset_top = 650.0
+offset_right = 1253.0
+offset_bottom = 700.0
+text = "Finished"
 
 [node name="ItemHoverUI" type="Control" parent="UI" unique_id=1548614605 node_paths=PackedStringArray("NameLabel", "CatagoryLabel", "DescriptionLabel") groups=["item_hover_ui"]]
 layout_mode = 3
@@ -73,6 +95,39 @@ offset_right = 40.0
 offset_bottom = 23.0
 metadata/_edit_use_anchors_ = true
 
+[node name="LeftBehindPanel" type="Panel" parent="UI" unique_id=1290022379]
+visible = false
+offset_left = -20.0
+offset_top = -17.0
+offset_right = 1325.0
+offset_bottom = 754.0
+
+[node name="ColorRect" type="ColorRect" parent="UI/LeftBehindPanel" unique_id=2015946116]
+layout_mode = 0
+offset_right = 1345.0
+offset_bottom = 773.0
+color = Color(0.04755766, 0.047557645, 0.047557645, 1)
+
+[node name="LeftBehindImage" type="TextureRect" parent="UI/LeftBehindPanel" unique_id=1589005961]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 239.0
+offset_right = 360.0
+offset_bottom = 279.0
+
+[node name="LeftBehindText" type="Label" parent="UI/LeftBehindPanel" unique_id=451404482]
+layout_mode = 0
+offset_left = 596.0
+offset_top = 153.0
+offset_right = 636.0
+offset_bottom = 176.0
+
+[node name="LeftBehindDescription" type="Label" parent="UI/LeftBehindPanel" unique_id=696661438]
+layout_mode = 0
+offset_left = 597.0
+offset_top = 234.0
+offset_right = 637.0
+offset_bottom = 257.0
 [node name="ShowItem" type="AudioStreamPlayer2D" parent="UI/ItemHoverUI" unique_id=294059165]
 stream = ExtResource("4_378hi")
 volume_db = -16.0
@@ -178,3 +233,15 @@ ItemSizeByCell = Vector2i(4, 4)
 ItemName = "Shirt"
 ItemDescription = "Surprisingly, your shirt is still holding up."
 Catagory = 3
+
+[node name="Watch" parent="." unique_id=668775312 groups=["items"] instance=ExtResource("2_uyvlg")]
+position = Vector2(1083, 309.5)
+texture = ExtResource("14_lj880")
+GridCellSize = Vector2i(32, 32)
+ItemSizeByCell = Vector2i(3, 5)
+ItemName = "Pocket Watch"
+ItemDescription = "Pocket Watch – A portable timepiece designed to be carried in a pocket, 
+often valued for its classic design and craftsmanship."
+Catagory = 2
+
+[connection signal="pressed" from="UI/Button" to="." method="OnFinishedButtonPressed"]

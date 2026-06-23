@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://ro2m1e06pqi3"]
+
+[node name="Phase2" type="Node2D" unique_id=370782555]
+
+[node name="BG" type="ColorRect" parent="." unique_id=1264775517]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.060530342, 0.06053035, 0.060530327, 1)
