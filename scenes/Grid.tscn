@@ -12,8 +12,9 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_t5fjg")
 
-[node name="Grid" type="Node2D" unique_id=446653954 groups=["grid"]]
+[node name="Grid" type="Node2D" unique_id=446653954 node_paths=PackedStringArray("GridMap") groups=["grid"]]
 script = ExtResource("1_8rubn")
+GridMap = NodePath("TileMapLayer")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=491214082]
 tile_set = SubResource("TileSet_w88cy")

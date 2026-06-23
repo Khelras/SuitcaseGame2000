@@ -1,12 +1,33 @@
 [gd_scene format=3 uid="uid://ro2m1e06pqi3"]
 
 [ext_resource type="Script" uid="uid://dgms8cl158013" path="res://scripts/PhaseTwoManager.cs" id="1_ky2pr"]
+[ext_resource type="Script" uid="uid://djbt7u5ikf1v5" path="res://scripts/PhaseTwoMorning.cs" id="2_31fyj"]
+[ext_resource type="FontFile" uid="uid://ce00fo2frqhds" path="res://fonts/KiriFont.otf" id="2_u3v5j"]
+[ext_resource type="Script" uid="uid://lj12bkg2dht1" path="res://scenes/PhaseTwoEvent.cs" id="4_j0lpx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_w444t"]
+font = ExtResource("2_u3v5j")
 font_size = 100
 
-[node name="Phase2" type="Node2D" unique_id=370782555]
+[sub_resource type="LabelSettings" id="LabelSettings_u3v5j"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_j0lpx"]
+font = ExtResource("2_u3v5j")
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_d3sne"]
+font = ExtResource("2_u3v5j")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_ppsh8"]
+font = ExtResource("2_u3v5j")
+font_size = 30
+
+[node name="Phase2" type="Node2D" unique_id=370782555 node_paths=PackedStringArray("phaseTwoMorning", "phaseTwoEvent")]
 script = ExtResource("1_ky2pr")
+phaseTwoMorning = NodePath("CanvasLayer/Morning")
+phaseTwoEvent = NodePath("CanvasLayer/Event")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1478096609]
 
@@ -18,13 +39,17 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.060530342, 0.06053035, 0.060530327, 1)
 
-[node name="Morning" type="Control" parent="CanvasLayer" unique_id=1168666572]
+[node name="Morning" type="Control" parent="CanvasLayer" unique_id=1168666572 node_paths=PackedStringArray("dayLabel", "continueButton")]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_31fyj")
+dayLabel = NodePath("Day")
+continueButton = NodePath("Continue")
 
 [node name="Day" type="Label" parent="CanvasLayer/Morning" unique_id=461812911]
 layout_mode = 1
@@ -44,3 +69,173 @@ label_settings = SubResource("LabelSettings_w444t")
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
+
+[node name="Continue" type="Button" parent="CanvasLayer/Morning" unique_id=1981051037]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.25
+offset_top = 44.160004
+offset_right = 130.25
+offset_bottom = 103.51999
+grow_horizontal = 2
+grow_vertical = 2
+disabled = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Morning/Continue" unique_id=2105441611]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Continue..."
+label_settings = SubResource("LabelSettings_u3v5j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Event" type="Control" parent="CanvasLayer" unique_id=1902802404 node_paths=PackedStringArray("prompt", "promptLabel", "optionA", "optionB", "result", "resultLabel")]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_j0lpx")
+prompt = NodePath("Prompt")
+promptLabel = NodePath("Prompt/PromptLabel")
+optionA = NodePath("Prompt/OptionA")
+optionB = NodePath("Prompt/OptionB")
+result = NodePath("Result")
+resultLabel = NodePath("Result/ResultLabel")
+
+[node name="Prompt" type="Control" parent="CanvasLayer/Event" unique_id=391915426]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PromptLabel" type="Label" parent="CanvasLayer/Event/Prompt" unique_id=650331735]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -376.0
+offset_top = -141.712
+offset_right = 376.0
+offset_bottom = -20.997375
+grow_horizontal = 2
+grow_vertical = 2
+text = "Example Prompt Label..."
+label_settings = SubResource("LabelSettings_j0lpx")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="OptionA" type="Button" parent="CanvasLayer/Event/Prompt" unique_id=1284001800]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -315.0
+offset_top = 40.0
+offset_right = -85.0
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+disabled = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Event/Prompt/OptionA" unique_id=975569037]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.5
+offset_top = -8.5
+offset_right = 48.5
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Option A"
+label_settings = SubResource("LabelSettings_d3sne")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionB" type="Button" parent="CanvasLayer/Event/Prompt" unique_id=179609205]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 85.0
+offset_top = 40.0
+offset_right = 315.0
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+disabled = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Event/Prompt/OptionB" unique_id=1146743364]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.5
+offset_top = -8.5
+offset_right = 48.5
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Option B"
+label_settings = SubResource("LabelSettings_d3sne")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Result" type="Control" parent="CanvasLayer/Event" unique_id=1514220405]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResultLabel" type="Label" parent="CanvasLayer/Event/Result" unique_id=321479422]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Example Result Label..."
+label_settings = SubResource("LabelSettings_ppsh8")
+
+[connection signal="MorningFadeOutComplete" from="CanvasLayer/Morning" to="." method="OnMorningFadeOutComplete"]
+[connection signal="pressed" from="CanvasLayer/Morning/Continue" to="." method="OnContinueButtonPressed"]
+[connection signal="EventPromptFadeOutComplete" from="CanvasLayer/Event" to="." method="OnEventPromptFadeOutComplete"]
+[connection signal="pressed" from="CanvasLayer/Event/Prompt/OptionA" to="." method="OnOptionA"]
+[connection signal="pressed" from="CanvasLayer/Event/Prompt/OptionB" to="." method="OnOptionB"]

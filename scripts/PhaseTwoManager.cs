@@ -25,6 +25,10 @@ public partial class PhaseTwoManager : Node
 	// Game Manager
 	private GameManager game;
 
+	// Exports
+	[Export] PhaseTwoMorning phaseTwoMorning;
+	[Export] PhaseTwoEvent phaseTwoEvent;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -47,10 +51,50 @@ public partial class PhaseTwoManager : Node
 				case ItemCatagory.Functional: { functionalItems.Add(item); } break;
 			}
 		}
+
+        // Fade into Morning
+        phaseTwoMorning.dayLabel.Text = $"Day {day}";
+        phaseTwoMorning.FadeInMorning(2.0f);
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+	}
+
+	private void OnContinueButtonPressed()
+	{
+        // Fade Out
+        phaseTwoMorning.FadeOutMorning(1.0f);
+	}
+
+	private void OnMorningFadeOutComplete()
+	{
+		// Start the Event
+		phaseTwoEvent.StartEvent();
+	}
+
+    private void OnOptionA()
+    {
+        // DEBUG
+        GD.Print("On Option-A Button Pressed!"); 
+
+		// Fade Out Prompt
+		phaseTwoEvent.PromptFadeOut();
+    }
+
+    private void OnOptionB()
+    {
+        // DEBUG
+        GD.Print("On Option-B Button Pressed!"); 
+
+        // Fade Out Prompt
+        phaseTwoEvent.PromptFadeOut();
+    }
+
+	private void OnEventPromptFadeOutComplete()
+	{
+		// Show Result
+		phaseTwoEvent.ShowResult();
 	}
 }
