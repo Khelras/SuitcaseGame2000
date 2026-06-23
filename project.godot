@@ -30,6 +30,15 @@ window/size/resizable=false
 
 project/assembly_name="SuitcaseGame2000"
 
+[file_customization]
+
+folder_colors={
+"res://assets/": "red",
+"res://scenes/": "orange",
+"res://scripts/": "pink",
+"res://sfx/": "green"
+}
+
 [global_group]
 
 grid=""
