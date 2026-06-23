@@ -5,7 +5,7 @@ public partial class MainMenu : Control //We use Control instead of Node2D becau
 {
 	private void OnStartPressed()
 	{
-		GetTree().ChangeSceneToFile("res://scenes/Phase1.tscn"); //Change the scene to the stage select when the start button is pressed
+		GetTree().ChangeSceneToFile("res://scenes/Game.tscn"); //Change the scene to the stage select when the start button is pressed
 	}
 
 	private void OnExitPressed()

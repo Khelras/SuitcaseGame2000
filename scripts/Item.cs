@@ -20,15 +20,13 @@ public partial class Item : Sprite2D
     [Export] public Vector2I GridCellSize { get; private set; }
     [Export] public Vector2I ItemSizeByCell { get; private set; }
 
+    private AudioStreamPlayer2D sfxGrab;
+    private AudioStreamPlayer2D sfxDrop;
+    private AudioStreamPlayer2D sfxInsideGrid;
     //Export ItemName, ItemDescription, and ItemCatagory for use in the UI when an item is selected
     [Export] public string ItemName { get; private set; } = "Unnamed Item";
     [Export(PropertyHint.MultilineText)] public string ItemDescription { get; private set; } = "No Description";
     [Export] public ItemCatagory Catagory { get; private set; }
-
-    // Sound Effects
-    private AudioStreamPlayer2D sfxGrab;
-    private AudioStreamPlayer2D sfxDrop;
-    private AudioStreamPlayer2D sfxInsideGrid;
 
     //Store if the item is packed, its packed if its placed
     public bool IsPacked => hasPlaced;
