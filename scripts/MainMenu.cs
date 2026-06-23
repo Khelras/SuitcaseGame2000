@@ -3,7 +3,16 @@ using System;
 
 public partial class MainMenu : Control //We use Control instead of Node2D because we want to use the UI system
 {
-	private void OnStartPressed()
+	[Export] public Button[] menuButton;
+	public override void _Ready() {
+		foreach (Button button in menuButton) {
+			
+			button.MouseFilter = MouseFilterEnum.Ignore; // mouse won't work
+			
+		}
+	}
+
+    private void OnStartPressed()
 	{
 		GetTree().ChangeSceneToFile("res://scenes/Phase1.tscn"); //Change the scene to the stage select when the start button is pressed
 	}
