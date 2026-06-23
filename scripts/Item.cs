@@ -5,15 +5,6 @@ using System.Collections.Generic;
 ///     A draggable inventory item that snaps to a tile grid when dropped.
 ///     Handles its own drag input, cell occupancy, and placement validation.
 /// </summary>
-
-public enum ItemCatagory
-{
-    Survival,
-    Sentimental,
-    CulturalIdentity,
-    Functional
-}
-
 public partial class Item : Sprite2D
 {
     [ExportGroup("Item Configuration")]
