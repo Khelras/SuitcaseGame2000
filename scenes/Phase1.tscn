@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ckryw7f5iaccw" path="res://scenes/Grid.tscn" id="1_5ssih"]
 [ext_resource type="Script" uid="uid://pru5cjj7jfmi" path="res://scripts/ItemsManager.cs" id="1_424rd"]
+[ext_resource type="Script" uid="uid://co3mp5xauaj5m" path="res://scripts/PhaseOneManager.cs" id="1_tc2r1"]
 [ext_resource type="Texture2D" uid="uid://bdcuvcrwo075h" path="res://assets/Suitcase.png" id="2_378hi"]
 [ext_resource type="PackedScene" uid="uid://bq2elwnpjopcb" path="res://scenes/Item.tscn" id="2_uyvlg"]
 [ext_resource type="Texture2D" uid="uid://vyjwadoa8lu8" path="res://assets/Pants_Asset_One.png" id="3_5ssih"]
@@ -16,32 +17,34 @@
 [ext_resource type="Texture2D" uid="uid://t3dktaphlnkq" path="res://assets/ShirtStack.png" id="13_tc2r1"]
 [ext_resource type="Texture2D" uid="uid://ciyiriakxep4u" path="res://assets/Watch_Asset.png" id="14_lj880"]
 
-[node name="Phase1" type="Node2D" unique_id=691362977]
+[node name="Phase1" type="Node2D" unique_id=691362977 node_paths=PackedStringArray("itemManager", "LeftBehindPanel", "LeftBehindImage", "LeftBehindText", "LeftBehindDescription")]
+script = ExtResource("1_tc2r1")
+itemManager = NodePath("ItemManager")
+LeftBehindPanel = NodePath("UI/LeftBehindPanel")
+LeftBehindImage = NodePath("UI/LeftBehindPanel/LeftBehindImage")
+LeftBehindText = NodePath("UI/LeftBehindPanel/LeftBehindText")
+LeftBehindDescription = NodePath("UI/LeftBehindPanel/LeftBehindDescription")
 
-[node name="Button" type="Button" parent="." unique_id=301256921]
-offset_left = 1088.0
-offset_top = 659.0
-offset_right = 1266.0
-offset_bottom = 709.0
-text = "Finished"
+[node name="ItemManager" type="Node" parent="." unique_id=298203584]
+script = ExtResource("1_424rd")
 
 [node name="Suitcase" type="Sprite2D" parent="." unique_id=373507674]
 position = Vector2(348.5001, 343.75003)
 scale = Vector2(0.7119141, 0.67236334)
 texture = ExtResource("2_378hi")
 
-[node name="ItemManager" type="Node" parent="." unique_id=298203584 node_paths=PackedStringArray("LeftBehindPanel", "LeftBehindImage", "LeftBehindText", "LeftBehindDescription")]
-script = ExtResource("1_424rd")
-LeftBehindPanel = NodePath("../UI/LeftBehindPanel")
-LeftBehindImage = NodePath("../UI/LeftBehindPanel/LeftBehindImage")
-LeftBehindText = NodePath("../UI/LeftBehindPanel/LeftBehindText")
-LeftBehindDescription = NodePath("../UI/LeftBehindPanel/LeftBehindDescription")
-
 [node name="Grid" parent="." unique_id=446653954 instance=ExtResource("1_5ssih")]
 GridPosition = Vector2(60, 20)
 GridSize = Vector2i(18, 20)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1923099759]
+
+[node name="Button" type="Button" parent="UI" unique_id=301256921]
+offset_left = 1075.0
+offset_top = 650.0
+offset_right = 1253.0
+offset_bottom = 700.0
+text = "Finished"
 
 [node name="ItemHoverUI" type="Control" parent="UI" unique_id=1548614605 node_paths=PackedStringArray("NameLabel", "CatagoryLabel", "DescriptionLabel") groups=["item_hover_ui"]]
 layout_mode = 3
@@ -220,4 +223,4 @@ ItemDescription = "Pocket Watch – A portable timepiece designed to be carried 
 often valued for its classic design and craftsmanship."
 Catagory = 2
 
-[connection signal="pressed" from="Button" to="ItemManager" method="OnButtonPressed"]
+[connection signal="pressed" from="UI/Button" to="." method="OnFinishedButtonPressed"]

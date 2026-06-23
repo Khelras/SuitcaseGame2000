@@ -5,8 +5,8 @@ using System.Collections.Generic;
 public partial class GameManager : Node
 {
 	// Items
-    public List<Item> packedItems { get; set; } = new();
-    public List<Item> leftBehindItems { get; set; } = new();
+    public List<ItemID> packedItems { get; set; } = new();
+    public List<ItemID> leftBehindItems { get; set; } = new();
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
