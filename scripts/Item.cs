@@ -151,15 +151,25 @@ public partial class Item : Sprite2D
 
     public override void _Input(InputEvent @event)
     { 
-        if (@event is InputEventMouseButton mouseButton
-            && mouseButton.ButtonIndex == MouseButton.Left
-            && mouseButton.Pressed == false)
+        if (@event is InputEventMouseButton mouseButton)
         {
-            // Only Drop an Item if in a Dragging State
-            if (dragging == false) return;
+            // Left Mouse Button Released to Drop Item
+            if (mouseButton.ButtonIndex == MouseButton.Left && mouseButton.Pressed == false)
+            {
+                // Only Drop an Item if in a Dragging State
+                if (dragging == false) return;
 
-            Drop();
-            sfxDrop.Play();
+                Drop();
+                sfxDrop.Play();
+            }
+
+            // Right Click to Rotate
+            if (mouseButton.ButtonIndex == MouseButton.Right && mouseButton.Pressed && dragging)
+            {
+                if (dragging == false) return;
+                Rotate90();
+                return;
+            }
         }
     }
 
@@ -220,6 +230,51 @@ public partial class Item : Sprite2D
 
         grid.HidePreviewCells();
     }
+
+    // ==================================================
+    //  Rotation
+    // ==================================================
+
+    /// <summary>
+    ///     Rotates the item 90degs clockwise, swaps its cell footprint, and
+    ///     updates the collision shape to match the new dimensions.
+    /// </summary>
+    private void Rotate90()
+    {
+        RotationDegrees += 90f;
+
+        // Swap cell footprint so the grid knows the new orientation
+        ItemSizeByCell = new Vector2I(ItemSizeByCell.Y, ItemSizeByCell.X);
+
+        // Only update collision shape — sprite scale stays the same
+        ApplyRotationToSizeAndShape();
+
+        // Refresh grid preview
+        Vector2 topLeft = GetWorldTopLeft();
+        currentCells = grid.GetCellsForItem(topLeft, ItemSizeByCell);
+        if (currentCells.Count == 0)
+            grid.HidePreviewCells();
+        else
+            grid.ShowPreviewCells(currentCells, AreCellsValid(currentCells));
+    }
+
+    /// <summary>
+    ///     Updates only the collision shape to match the current ItemSizeByCell.
+    ///     Scale is intentionally NOT changed — the sprite texture rotates naturally
+    ///     with RotationDegrees, so the visual shape is already correct.
+    /// </summary>
+    private void ApplyRotationToSizeAndShape()
+    {
+        if (collisionShape.Shape is RectangleShape2D rectShape)
+        {
+            // ItemSizeByCell is already swapped before this is called,
+            // so this correctly sets the collision box to the new W x H
+            Vector2 pixelSize = (Vector2)(ItemSizeByCell * GridCellSize);
+            rectShape.Size = pixelSize / (pixelSize / Texture.GetSize());
+            rectShape.Size = Texture.GetSize();
+        }
+    }
+
 
     // ==================================================
     //  Helpers
