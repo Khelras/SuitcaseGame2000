@@ -75,18 +75,18 @@ offset_bottom = 680.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_fonts/font = ExtResource("2_y8nor")
 theme_override_font_sizes/font_size = 34
-text = "Credits:
-Programmers
+text = "------ Credits ------
+Programmers:
 
 Janwae
 Angelo
 Robert
 
-Artist
+Artists:
 
 Galya
 Charlie
-Anothy
+Anthony
 "
 horizontal_alignment = 1
 
