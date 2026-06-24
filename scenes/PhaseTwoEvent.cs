@@ -4,14 +4,18 @@ using System;
 public partial class PhaseTwoEvent : Control
 {
     [ExportGroup("Prompt")]
-    [Export] Control prompt;
-    [Export] Label promptLabel;
-    [Export] Button optionA;
-    [Export] Button optionB;
+    [Export] public Control prompt;
+    [Export] public Label promptLabel;
+    [Export] public Button optionA;
+    [Export] public Button optionB;
+
+    [ExportGroup("PromptBackground")]
+    [Export] public Sprite2D promptBackground;
+    [Export] public Texture2D[] backgroundImages;
 
     [ExportGroup("Result")]
-    [Export] Control result;
-    [Export] Label resultLabel;
+    [Export] public Control result;
+    [Export] public Label resultLabel;
     [Export] public Button nextDayButton;
 
     // Signals
@@ -26,10 +30,12 @@ public partial class PhaseTwoEvent : Control
         // Visibility
         Visible = false;
         prompt.Visible = false;
+        promptBackground.Visible = false;
         result.Visible = false;
 
         // Modulate
         prompt.Modulate = new Color(1f, 1f, 1f, 0f);
+        promptBackground.Modulate = new Color(1f, 1f, 1f, 0f);
         result.Modulate = new Color(1f, 1f, 1f, 0f);
     }
 
@@ -43,6 +49,7 @@ public partial class PhaseTwoEvent : Control
         // Visibility
         Visible = true;
         prompt.Visible = true;
+        promptBackground.Visible = true;
         result.Visible = false;
 
         // Prompt Text
@@ -65,6 +72,18 @@ public partial class PhaseTwoEvent : Control
                 "\nB: Find an item to take comfort in.";
         }
 
+        // Prompt Background
+        int index = day - 1;
+        if (index < backgroundImages.Length && index >= 0)
+        {
+            promptBackground.Texture = backgroundImages[index];
+        }
+        else
+        {
+            // Remove Background
+            promptBackground.Texture = null;
+        }
+
         // Fade Into Prompt
         PromptFadeIn();
     }
@@ -80,11 +99,17 @@ public partial class PhaseTwoEvent : Control
 
     public async void PromptFadeIn(float duration = 1f)
     {
-        // Fade In
+        // Fade In Prompt Background
+        promptBackground.Visible = true;
+        Tween bgTween = CreateTween();
+        bgTween.TweenProperty(promptBackground, "modulate:a", 1.0f, duration);
+        await ToSignal(bgTween, Tween.SignalName.Finished);
+
+        // Fade In Prompt Text
         prompt.Visible = true;
-        Tween tween = CreateTween();
-        tween.TweenProperty(prompt, "modulate:a", 1.0f, duration);
-        await ToSignal(tween, Tween.SignalName.Finished);
+        Tween promptTween = CreateTween();
+        promptTween.TweenProperty(prompt, "modulate:a", 1.0f, duration);
+        await ToSignal(promptTween, Tween.SignalName.Finished);
 
         // Enable Buttons
         optionA.Disabled = false;
@@ -100,11 +125,17 @@ public partial class PhaseTwoEvent : Control
         optionA.Disabled = true;
         optionB.Disabled = true;
 
-        // Fade Out
-        Tween tween = CreateTween();
-        tween.TweenProperty(prompt, "modulate:a", 0.0f, duration);
-        await ToSignal(tween, Tween.SignalName.Finished);
+        // Fade Out Prompt Text
+        Tween promptTween = CreateTween();
+        promptTween.TweenProperty(prompt, "modulate:a", 0.0f, duration);
+        await ToSignal(promptTween, Tween.SignalName.Finished);
         prompt.Visible = false;
+
+        // Fade Out Prompt Background
+        Tween bgTween = CreateTween();
+        bgTween.TweenProperty(promptBackground, "modulate:a", 0.0f, duration);
+        await ToSignal(bgTween, Tween.SignalName.Finished);
+        promptBackground.Visible = false;
 
         // Emit Signal
         EmitSignal(SignalName.EventPromptFadeOutComplete);

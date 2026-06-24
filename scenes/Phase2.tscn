@@ -4,6 +4,9 @@
 [ext_resource type="Script" uid="uid://djbt7u5ikf1v5" path="res://scripts/PhaseTwoMorning.cs" id="2_31fyj"]
 [ext_resource type="FontFile" uid="uid://ce00fo2frqhds" path="res://fonts/KiriFont.otf" id="2_u3v5j"]
 [ext_resource type="Script" uid="uid://lj12bkg2dht1" path="res://scenes/PhaseTwoEvent.cs" id="4_j0lpx"]
+[ext_resource type="Texture2D" uid="uid://dc7sr03f1s1dk" path="res://assets/PhaseTwoBackgrounds/Apartment_BG_Asset.png" id="5_d3sne"]
+[ext_resource type="Texture2D" uid="uid://biagfby76vy8" path="res://assets/PhaseTwoBackgrounds/Warehouse_BG_Asset.png" id="6_4u3v1"]
+[ext_resource type="Texture2D" uid="uid://b6uvbpba8xlmx" path="res://assets/PhaseTwoBackgrounds/Bus_BG_Asset.png" id="7_ja24s"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_w444t"]
 font = ExtResource("2_u3v5j")
@@ -103,6 +106,8 @@ font_size = 24
 [sub_resource type="LabelSettings" id="LabelSettings_j0lpx"]
 font = ExtResource("2_u3v5j")
 font_size = 30
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_d3sne"]
 font = ExtResource("2_u3v5j")
@@ -127,6 +132,7 @@ grow_vertical = 2
 color = Color(0.060530342, 0.06053035, 0.060530327, 1)
 
 [node name="Morning" type="Control" parent="CanvasLayer" unique_id=1168666572 node_paths=PackedStringArray("dayLabel", "continueButton")]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -295,7 +301,7 @@ label_settings = SubResource("LabelSettings_u3v5j")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Event" type="Control" parent="CanvasLayer" unique_id=1902802404 node_paths=PackedStringArray("prompt", "promptLabel", "optionA", "optionB", "result", "resultLabel", "nextDayButton")]
+[node name="Event" type="Control" parent="CanvasLayer" unique_id=1902802404 node_paths=PackedStringArray("prompt", "promptLabel", "optionA", "optionB", "promptBackground", "result", "resultLabel", "nextDayButton")]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -308,9 +314,17 @@ prompt = NodePath("Prompt")
 promptLabel = NodePath("Prompt/PromptLabel")
 optionA = NodePath("Prompt/OptionA")
 optionB = NodePath("Prompt/OptionB")
+promptBackground = NodePath("Background")
+backgroundImages = Array[Texture2D]([ExtResource("5_d3sne"), ExtResource("6_4u3v1"), ExtResource("7_ja24s")])
 result = NodePath("Result")
 resultLabel = NodePath("Result/ResultLabel")
 nextDayButton = NodePath("Result/NextDay")
+
+[node name="Background" type="Sprite2D" parent="CanvasLayer/Event" unique_id=1880485607]
+visible = false
+scale = Vector2(0.6666667, 0.6666667)
+texture = ExtResource("5_d3sne")
+centered = false
 
 [node name="Prompt" type="Control" parent="CanvasLayer/Event" unique_id=391915426]
 visible = false
