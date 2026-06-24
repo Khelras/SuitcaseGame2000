@@ -20,6 +20,10 @@ shape = SubResource("RectangleShape2D_hm0qy")
 stream = ExtResource("2_e0dfn")
 volume_db = -16.0
 
+[node name="SfxRotate" type="AudioStreamPlayer2D" parent="." unique_id=885559623]
+stream = ExtResource("2_e0dfn")
+volume_db = -16.0
+
 [node name="SfxDrop" type="AudioStreamPlayer2D" parent="." unique_id=1916877589]
 stream = ExtResource("3_va81k")
 volume_db = -16.0

@@ -87,7 +87,7 @@ public partial class PhaseOneManager : Node
             fadeIn.Parallel().TweenProperty(LeftBehindDescription, "modulate:a", 1.0, 0.6);
             await ToSignal(fadeIn, "finished");
 
-            await ToSignal(GetTree().CreateTimer(2.0), "timeout");
+            await ToSignal(GetTree().CreateTimer(4.0), "timeout");
 
             // Fade item/text out
             Tween fadeOut = CreateTween();

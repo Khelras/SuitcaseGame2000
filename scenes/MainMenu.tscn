@@ -114,14 +114,13 @@ color = Color(0.8980392, 0.6156863, 0.17254902, 1)
 [node name="Credits_Label" type="Label" parent="Credits_Button" unique_id=1542094187]
 layout_mode = 0
 offset_left = 27.0
-offset_top = -8.0
+offset_top = -10.0
 offset_right = 137.0
-offset_bottom = 85.0
+offset_bottom = 83.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_fonts/font = ExtResource("4_l72w3")
 theme_override_font_sizes/font_size = 24
-text = "Credits
-"
+text = "Credits"
 horizontal_alignment = 1
 vertical_alignment = 1
 

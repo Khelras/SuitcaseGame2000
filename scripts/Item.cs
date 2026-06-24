@@ -27,6 +27,7 @@ public partial class Item : Sprite2D
     public Vector2I GridCellSize { get; private set; } = new Vector2I(48, 48);
 
     private AudioStreamPlayer2D sfxGrab;
+    private AudioStreamPlayer2D sfxRotate;
     private AudioStreamPlayer2D sfxDrop;
     private AudioStreamPlayer2D sfxInsideGrid;
 
@@ -91,12 +92,13 @@ public partial class Item : Sprite2D
 
         area = GetNode<Area2D>("Area2D");
         area.InputEvent += OnInputEvent;
-
-        sfxGrab = GetNode<AudioStreamPlayer2D>("SfxGrab");
-        sfxDrop = GetNode<AudioStreamPlayer2D>("SfxDrop");
-        sfxInsideGrid = GetNode<AudioStreamPlayer2D>("SfxInsideTheGrid");
         area.MouseEntered += OnMouseEntered;
         area.MouseExited += OnMouseExited;
+
+        sfxGrab = GetNode<AudioStreamPlayer2D>("SfxGrab");
+        sfxRotate = GetNode<AudioStreamPlayer2D>("SfxRotate");
+        sfxDrop = GetNode<AudioStreamPlayer2D>("SfxDrop");
+        sfxInsideGrid = GetNode<AudioStreamPlayer2D>("SfxInsideTheGrid");
 
         // Grid is found via group so Items don't need a direct scene reference
         grid = GetTree().GetFirstNodeInGroup("grid") as Grid;
@@ -170,6 +172,7 @@ public partial class Item : Sprite2D
             {
                 if (dragging == false) return;
                 Rotate90();
+                sfxRotate.Play();
                 return;
             }
         }

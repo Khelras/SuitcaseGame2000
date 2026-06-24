@@ -18,12 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://drbadsl7g1trv" path="res://assets/Computer_Asset.png" id="11_lj880"]
 [ext_resource type="Texture2D" uid="uid://b4x1ii4uk0pbq" path="res://assets/Old Photo.png" id="12_378hi"]
 [ext_resource type="Texture2D" uid="uid://t3dktaphlnkq" path="res://assets/ShirtStack.png" id="13_tc2r1"]
-[ext_resource type="Texture2D" uid="uid://b10ofvyve71fm" path="res://assets/Food_Aseet_One.png" id="15_w8tmu"]
-[ext_resource type="Texture2D" uid="uid://85yv2nlw6vip" path="res://assets/Food_Aseet_Two.png" id="16_rt7d0"]
 [ext_resource type="Texture2D" uid="uid://dt6aqg82dve6f" path="res://assets/Socks_1.png" id="17_6pme8"]
-[ext_resource type="Texture2D" uid="uid://cty835wd6qebj" path="res://assets/Food_Aseet_three.png" id="17_rp7th"]
 [ext_resource type="Texture2D" uid="uid://b0wkvatu41bk0" path="res://assets/Socks_2.png" id="18_bdrqv"]
-[ext_resource type="Texture2D" uid="uid://cn8oq61wmthdg" path="res://assets/Food_Aseet_Four.png" id="18_gr7j1"]
 [ext_resource type="Texture2D" uid="uid://dd8nbjuane3js" path="res://assets/TowelRoll.png" id="19_m1g8v"]
 [ext_resource type="Texture2D" uid="uid://cm72spt2f07qm" path="res://assets/Shoes.png" id="20_gjqpf"]
 [ext_resource type="Texture2D" uid="uid://ck5jey8sjh7j" path="res://assets/Hoodie.png" id="21_15d33"]
@@ -248,28 +244,28 @@ Catagory = 1
 
 [node name="Food1" parent="ItemManager" unique_id=1996804444 groups=["items"] instance=ExtResource("2_uyvlg")]
 position = Vector2(956, 335)
-texture = ExtResource("15_w8tmu")
+texture = ExtResource("27_w8tmu")
 ItemSizeByCell = Vector2i(1, 2)
 ItemName = "FoodCan"
 ItemDescription = "Your favourite novel, gifted to you by your mum. Knowing how much you liked the fantasy books she used to read you when you were younger, she gave this to you on your 8th birthday. You were enamored with it for the months afterwards. Looking at it makes you remember all those times you’d pretend to be the piper or the leviathan and play with your schoolmates or cousins."
 
 [node name="Food2" parent="ItemManager" unique_id=1562081748 groups=["items"] instance=ExtResource("2_uyvlg")]
 position = Vector2(909, 383)
-texture = ExtResource("16_rt7d0")
+texture = ExtResource("28_rt7d0")
 ItemSizeByCell = Vector2i(1, 2)
 ItemName = "FoodCan"
 ItemDescription = "Your favourite novel, gifted to you by your mum. Knowing how much you liked the fantasy books she used to read you when you were younger, she gave this to you on your 8th birthday. You were enamored with it for the months afterwards. Looking at it makes you remember all those times you’d pretend to be the piper or the leviathan and play with your schoolmates or cousins."
 
 [node name="Food3" parent="ItemManager" unique_id=1672243142 groups=["items"] instance=ExtResource("2_uyvlg")]
 position = Vector2(939, 344)
-texture = ExtResource("17_rp7th")
+texture = ExtResource("29_rp7th")
 ItemSizeByCell = Vector2i(3, 1)
 ItemName = "NutBar"
 ItemDescription = "Your favourite novel, gifted to you by your mum. Knowing how much you liked the fantasy books she used to read you when you were younger, she gave this to you on your 8th birthday. You were enamored with it for the months afterwards. Looking at it makes you remember all those times you’d pretend to be the piper or the leviathan and play with your schoolmates or cousins."
 
 [node name="Food4" parent="ItemManager" unique_id=1172749116 groups=["items"] instance=ExtResource("2_uyvlg")]
 position = Vector2(939, 344)
-texture = ExtResource("18_gr7j1")
+texture = ExtResource("26_kloqn")
 ItemSizeByCell = Vector2i(2, 2)
 ItemName = "InstantNoodles"
 ItemDescription = "Your favourite novel, gifted to you by your mum. Knowing how much you liked the fantasy books she used to read you when you were younger, she gave this to you on your 8th birthday. You were enamored with it for the months afterwards. Looking at it makes you remember all those times you’d pretend to be the piper or the leviathan and play with your schoolmates or cousins."
@@ -370,25 +366,5 @@ ItemSizeByCell = Vector2i(1, 3)
 ItemName = "EngravedAmulet"
 ItemDescription = "A brass engraved amulet. Your family has had this since the 19th century if the stuff your grandpa told is to be believed. It's not worth much in terms of monetary value, but its sentimental value supersedes that fact."
 Catagory = 1
-
-[node name="InstantNoddles" parent="." unique_id=1960630593 instance=ExtResource("2_uyvlg")]
-position = Vector2(616, -35)
-texture = ExtResource("26_kloqn")
-ItemName = "InstantNoddles"
-ItemDescription = "You loved instantnoddles"
-
-[node name="Item2" parent="." unique_id=1211220808 instance=ExtResource("2_uyvlg")]
-position = Vector2(949, -17)
-texture = ExtResource("27_w8tmu")
-
-[node name="Item4" parent="." unique_id=1729033286 instance=ExtResource("2_uyvlg")]
-position = Vector2(1079, -17)
-texture = ExtResource("28_rt7d0")
-
-[node name="ProteinBar" parent="." unique_id=125231545 instance=ExtResource("2_uyvlg")]
-position = Vector2(269, 136)
-texture = ExtResource("29_rp7th")
-ItemName = "ProteinBar"
-ItemDescription = "A quick snack"
 
 [connection signal="pressed" from="UI/Button" to="." method="OnFinishedButtonPressed"]

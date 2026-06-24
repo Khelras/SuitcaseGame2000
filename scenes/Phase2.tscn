@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dgms8cl158013" path="res://scripts/PhaseTwoManager.cs" id="1_ky2pr"]
 [ext_resource type="Script" uid="uid://djbt7u5ikf1v5" path="res://scripts/PhaseTwoMorning.cs" id="2_31fyj"]
 [ext_resource type="FontFile" uid="uid://ce00fo2frqhds" path="res://fonts/KiriFont.otf" id="2_u3v5j"]
-[ext_resource type="Script" uid="uid://lj12bkg2dht1" path="res://scenes/PhaseTwoEvent.cs" id="4_j0lpx"]
+[ext_resource type="Script" uid="uid://lj12bkg2dht1" path="res://scripts/PhaseTwoEvent.cs" id="4_j0lpx"]
 [ext_resource type="Texture2D" uid="uid://dc7sr03f1s1dk" path="res://assets/PhaseTwoBackgrounds/Apartment_BG_Asset.png" id="5_d3sne"]
 [ext_resource type="Texture2D" uid="uid://biagfby76vy8" path="res://assets/PhaseTwoBackgrounds/Warehouse_BG_Asset.png" id="6_4u3v1"]
 [ext_resource type="Texture2D" uid="uid://b6uvbpba8xlmx" path="res://assets/PhaseTwoBackgrounds/Bus_BG_Asset.png" id="7_ja24s"]
