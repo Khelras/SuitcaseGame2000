@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://outgjcysy1p5"]
+
+[ext_resource type="Script" uid="uid://bu0njw25o4icq" path="res://scripts/MainMenu.cs" id="1_hi4w3"]
+[ext_resource type="FontFile" uid="uid://bow5qwm4orpgh" path="res://fonts/HelpMe.ttf" id="2_y8nor"]
+[ext_resource type="Script" uid="uid://84l2u0ymr2ag" path="res://scripts/LabelController.cs" id="3_al82v"]
+[ext_resource type="AudioStream" uid="uid://checan26uqywg" path="res://sfx/freesound_community-menu-selection.wav" id="4_tlwrt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l72w3"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l72w3"]
+
+[node name="MainMenu" type="Control" unique_id=264811829 node_paths=PackedStringArray("menuButton")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_hi4w3")
+menuButton = [NodePath("Back_Button")]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=985505306]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 728.0
+color = Color(0, 0, 0, 1)
+
+[node name="Back_Button" type="Button" parent="." unique_id=291161262 node_paths=PackedStringArray("label", "colorRect", "selectMenu")]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 229.0
+offset_right = 200.0
+offset_bottom = 299.0
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+theme_override_styles/normal = SubResource("StyleBoxFlat_l72w3")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_l72w3")
+script = ExtResource("3_al82v")
+label = NodePath("Back_Label")
+colorRect = NodePath("ColorRect")
+selectMenu = NodePath("AudioStreamPlayer2D")
+ScaleUpSpeed = 0.1
+ScaleDownSpeed = 0.15
+moveDistance = 300.0
+animationDuration = 0.3
+
+[node name="ColorRect" type="ColorRect" parent="Back_Button" unique_id=1582292859]
+layout_mode = 0
+offset_left = -357.0
+offset_top = -5.0
+offset_right = -199.51042
+offset_bottom = 82.0
+scale = Vector2(1.9810836, 1)
+color = Color(0.8980392, 0.6156863, 0.17254902, 1)
+
+[node name="Back_Label" type="Label" parent="Back_Button" unique_id=1403375465]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 11.0
+offset_right = 117.0
+offset_bottom = 59.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_y8nor")
+theme_override_font_sizes/font_size = 24
+text = "Back"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Back_Button" unique_id=1032473109]
+stream = ExtResource("4_tlwrt")
+
+[node name="Credits" type="Label" parent="." unique_id=1079402055]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 40.0
+offset_right = 936.0
+offset_bottom = 680.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_y8nor")
+theme_override_font_sizes/font_size = 34
+text = "Credits:
+Programmers
+
+Janwae
+Angelo
+Robert
+
+Artist
+
+Galya
+Charlie
+Manuel
+"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Back_Button" to="." method="OnBackMenuPressed"]

@@ -5,6 +5,7 @@ public partial class MainMenu : Control //We use Control instead of Node2D becau
 {
 	[Export] public Button[] menuButton;
 	public override void _Ready() {
+		
 		foreach (Button button in menuButton) {
 			
 			button.MouseFilter = MouseFilterEnum.Ignore; // mouse won't work
@@ -21,4 +22,11 @@ public partial class MainMenu : Control //We use Control instead of Node2D becau
 	{
 		GetTree().Quit(); //Quit the game when the exit button is pressed
     }
+	private void OnBackMenuPressed() {
+        GetTree().ChangeSceneToFile("res://scenes/MainMenu.tscn");
+    }
+	private void OnCreditsPressed() {
+        GetTree().ChangeSceneToFile("res://scenes/Credits.tscn");
+    }
+
 }

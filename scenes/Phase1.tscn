@@ -30,6 +30,10 @@
 [ext_resource type="Texture2D" uid="uid://8ykfaygelww6" path="res://assets/WaterBottle.png" id="22_vltkr"]
 [ext_resource type="Texture2D" uid="uid://do8qtve4hpvo5" path="res://assets/Wristwatch.png" id="23_kloqn"]
 [ext_resource type="Texture2D" uid="uid://ciyiriakxep4u" path="res://assets/Watch_Asset.png" id="25_m1g8v"]
+[ext_resource type="Texture2D" uid="uid://cn8oq61wmthdg" path="res://assets/Food_Aseet_Four.png" id="26_kloqn"]
+[ext_resource type="Texture2D" uid="uid://b10ofvyve71fm" path="res://assets/Food_Aseet_One.png" id="27_w8tmu"]
+[ext_resource type="Texture2D" uid="uid://85yv2nlw6vip" path="res://assets/Food_Aseet_Two.png" id="28_rt7d0"]
+[ext_resource type="Texture2D" uid="uid://cty835wd6qebj" path="res://assets/Food_Aseet_three.png" id="29_rp7th"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_w8tmu"]
 font = ExtResource("6_tc2r1")
@@ -366,5 +370,25 @@ ItemSizeByCell = Vector2i(1, 3)
 ItemName = "EngravedAmulet"
 ItemDescription = "A brass engraved amulet. Your family has had this since the 19th century if the stuff your grandpa told is to be believed. It's not worth much in terms of monetary value, but its sentimental value supersedes that fact."
 Catagory = 1
+
+[node name="InstantNoddles" parent="." unique_id=1960630593 instance=ExtResource("2_uyvlg")]
+position = Vector2(616, -35)
+texture = ExtResource("26_kloqn")
+ItemName = "InstantNoddles"
+ItemDescription = "You loved instantnoddles"
+
+[node name="Item2" parent="." unique_id=1211220808 instance=ExtResource("2_uyvlg")]
+position = Vector2(949, -17)
+texture = ExtResource("27_w8tmu")
+
+[node name="Item4" parent="." unique_id=1729033286 instance=ExtResource("2_uyvlg")]
+position = Vector2(1079, -17)
+texture = ExtResource("28_rt7d0")
+
+[node name="ProteinBar" parent="." unique_id=125231545 instance=ExtResource("2_uyvlg")]
+position = Vector2(269, 136)
+texture = ExtResource("29_rp7th")
+ItemName = "ProteinBar"
+ItemDescription = "A quick snack"
 
 [connection signal="pressed" from="UI/Button" to="." method="OnFinishedButtonPressed"]
