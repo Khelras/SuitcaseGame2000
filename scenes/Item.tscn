@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bq2elwnpjopcb"]
+
+[ext_resource type="Script" uid="uid://b7bc66jwh16ij" path="res://scripts/Item.cs" id="1_j3wwg"]
+[ext_resource type="AudioStream" uid="uid://dxwjr8vnq5jpb" path="res://sfx/mixkit-hard-pop-click-2364.wav" id="2_e0dfn"]
+[ext_resource type="AudioStream" uid="uid://cfa5wc6dxhkfl" path="res://sfx/mixkit-long-pop-2358.wav" id="3_va81k"]
+[ext_resource type="AudioStream" uid="uid://cftf3yiartta6" path="res://sfx/mixkit-message-pop-alert-2354.mp3" id="4_fukb6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hm0qy"]
+size = Vector2(32, 32)
+
+[node name="Item" type="Sprite2D" unique_id=1332733576]
+script = ExtResource("1_j3wwg")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1315279913]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1840776049]
+shape = SubResource("RectangleShape2D_hm0qy")
+
+[node name="SfxGrab" type="AudioStreamPlayer2D" parent="." unique_id=539948512]
+stream = ExtResource("2_e0dfn")
+volume_db = -16.0
+
+[node name="SfxRotate" type="AudioStreamPlayer2D" parent="." unique_id=885559623]
+stream = ExtResource("2_e0dfn")
+volume_db = -16.0
+
+[node name="SfxDrop" type="AudioStreamPlayer2D" parent="." unique_id=1916877589]
+stream = ExtResource("3_va81k")
+volume_db = -16.0
+
+[node name="SfxInsideTheGrid" type="AudioStreamPlayer2D" parent="." unique_id=254104675]
+stream = ExtResource("4_fukb6")

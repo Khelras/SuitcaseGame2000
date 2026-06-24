@@ -1,0 +1,486 @@
+[gd_scene format=3 uid="uid://ro2m1e06pqi3"]
+
+[ext_resource type="Script" uid="uid://dgms8cl158013" path="res://scripts/PhaseTwoManager.cs" id="1_ky2pr"]
+[ext_resource type="Script" uid="uid://djbt7u5ikf1v5" path="res://scripts/PhaseTwoMorning.cs" id="2_31fyj"]
+[ext_resource type="FontFile" uid="uid://ce00fo2frqhds" path="res://fonts/KiriFont.otf" id="2_u3v5j"]
+[ext_resource type="Script" uid="uid://lj12bkg2dht1" path="res://scripts/PhaseTwoEvent.cs" id="4_j0lpx"]
+[ext_resource type="Texture2D" uid="uid://dc7sr03f1s1dk" path="res://assets/PhaseTwoBackgrounds/Apartment_BG_Asset.png" id="5_d3sne"]
+[ext_resource type="Texture2D" uid="uid://biagfby76vy8" path="res://assets/PhaseTwoBackgrounds/Warehouse_BG_Asset.png" id="6_4u3v1"]
+[ext_resource type="Texture2D" uid="uid://b6uvbpba8xlmx" path="res://assets/PhaseTwoBackgrounds/Bus_BG_Asset.png" id="7_ja24s"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_w444t"]
+font = ExtResource("2_u3v5j")
+font_size = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j0lpx"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0, 1, 0, 0.039215688)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d3sne"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0, 1, 0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="Theme" id="Theme_ppsh8"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_j0lpx")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_d3sne")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ppsh8"]
+font = ExtResource("2_u3v5j")
+font_size = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ppsh8"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(1, 0.49803922, 0, 0.039215688)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4u3v1"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(1, 0.49803922, 0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="Theme" id="Theme_ja24s"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_ppsh8")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_4u3v1")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6mvts"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0, 0.49803922, 1, 0.039215688)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ey2k"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0, 0.49803922, 1, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="Theme" id="Theme_rlpue"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_6mvts")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_2ey2k")
+
+[sub_resource type="LabelSettings" id="LabelSettings_u3v5j"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_j0lpx"]
+font = ExtResource("2_u3v5j")
+font_size = 30
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_d3sne"]
+font = ExtResource("2_u3v5j")
+font_size = 20
+
+[node name="Phase2" type="Node2D" unique_id=370782555 node_paths=PackedStringArray("healthBar", "shelterBar", "belongingBar", "phaseTwoMorning", "phaseTwoEvent")]
+script = ExtResource("1_ky2pr")
+healthBar = NodePath("CanvasLayer/Morning/HealthBar")
+shelterBar = NodePath("CanvasLayer/Morning/ShelterBar")
+belongingBar = NodePath("CanvasLayer/Morning/Belonging")
+phaseTwoMorning = NodePath("CanvasLayer/Morning")
+phaseTwoEvent = NodePath("CanvasLayer/Event")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1478096609]
+
+[node name="Background" type="ColorRect" parent="CanvasLayer" unique_id=1264775517]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.060530342, 0.06053035, 0.060530327, 1)
+
+[node name="Morning" type="Control" parent="CanvasLayer" unique_id=1168666572 node_paths=PackedStringArray("dayLabel", "continueButton")]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_31fyj")
+dayLabel = NodePath("Day")
+continueButton = NodePath("Continue")
+
+[node name="Day" type="Label" parent="CanvasLayer/Morning" unique_id=461812911]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -215.0
+offset_right = 192.0
+offset_bottom = -78.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Day ..."
+label_settings = SubResource("LabelSettings_w444t")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/Morning" unique_id=519747320]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -195.0
+offset_top = -10.0
+offset_right = 205.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ppsh8")
+max_value = 30.0
+step = 1.0
+value = 30.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="CanvasLayer/Morning/HealthBar" unique_id=30201732]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = -10.5
+offset_right = 53.5
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Health"
+label_settings = SubResource("LabelSettings_ppsh8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShelterBar" type="ProgressBar" parent="CanvasLayer/Morning" unique_id=197107805]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -195.0
+offset_top = 40.0
+offset_right = 205.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ja24s")
+max_value = 30.0
+step = 1.0
+value = 30.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="CanvasLayer/Morning/ShelterBar" unique_id=1388695319]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = -10.5
+offset_right = 53.5
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Shelter"
+label_settings = SubResource("LabelSettings_ppsh8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Belonging" type="ProgressBar" parent="CanvasLayer/Morning" unique_id=942486772]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -195.0
+offset_top = 90.0
+offset_right = 205.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_rlpue")
+max_value = 30.0
+step = 1.0
+value = 30.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="CanvasLayer/Morning/Belonging" unique_id=1291869558]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = -10.5
+offset_right = 53.5
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Belonging"
+label_settings = SubResource("LabelSettings_ppsh8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Continue" type="Button" parent="CanvasLayer/Morning" unique_id=1981051037]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.25
+offset_top = 160.0
+offset_right = 130.25
+offset_bottom = 219.35986
+grow_horizontal = 2
+grow_vertical = 2
+disabled = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Morning/Continue" unique_id=2105441611]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 2.670288e-05
+grow_horizontal = 2
+grow_vertical = 2
+text = "Continue..."
+label_settings = SubResource("LabelSettings_u3v5j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Event" type="Control" parent="CanvasLayer" unique_id=1902802404 node_paths=PackedStringArray("prompt", "promptLabel", "optionA", "optionB", "promptBackground", "result", "resultLabel", "nextDayButton")]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_j0lpx")
+prompt = NodePath("Prompt")
+promptLabel = NodePath("Prompt/PromptLabel")
+optionA = NodePath("Prompt/OptionA")
+optionB = NodePath("Prompt/OptionB")
+promptBackground = NodePath("Background")
+backgroundImages = Array[Texture2D]([ExtResource("5_d3sne"), ExtResource("6_4u3v1"), ExtResource("7_ja24s")])
+result = NodePath("Result")
+resultLabel = NodePath("Result/ResultLabel")
+nextDayButton = NodePath("Result/NextDay")
+
+[node name="Background" type="Sprite2D" parent="CanvasLayer/Event" unique_id=1880485607]
+visible = false
+scale = Vector2(0.6666667, 0.6666667)
+texture = ExtResource("5_d3sne")
+centered = false
+
+[node name="Prompt" type="Control" parent="CanvasLayer/Event" unique_id=391915426]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PromptLabel" type="Label" parent="CanvasLayer/Event/Prompt" unique_id=650331735]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -376.0
+offset_top = -141.712
+offset_right = 376.0
+offset_bottom = -20.997375
+grow_horizontal = 2
+grow_vertical = 2
+text = "Example Prompt Label..."
+label_settings = SubResource("LabelSettings_j0lpx")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="OptionA" type="Button" parent="CanvasLayer/Event/Prompt" unique_id=1284001800]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -315.0
+offset_top = 40.0
+offset_right = -85.0
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+disabled = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Event/Prompt/OptionA" unique_id=975569037]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.5
+offset_top = -8.5
+offset_right = 48.5
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Option A"
+label_settings = SubResource("LabelSettings_d3sne")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionB" type="Button" parent="CanvasLayer/Event/Prompt" unique_id=179609205]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 85.0
+offset_top = 40.0
+offset_right = 315.0
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+disabled = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Event/Prompt/OptionB" unique_id=1146743364]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.5
+offset_top = -8.5
+offset_right = 48.5
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Option B"
+label_settings = SubResource("LabelSettings_d3sne")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Result" type="Control" parent="CanvasLayer/Event" unique_id=1514220405]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResultLabel" type="Label" parent="CanvasLayer/Event/Result" unique_id=2092757676]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -376.0
+offset_top = -191.0
+offset_right = 376.0
+offset_bottom = 6.0025024
+grow_horizontal = 2
+grow_vertical = 2
+text = "Example Result Label..."
+label_settings = SubResource("LabelSettings_j0lpx")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="NextDay" type="Button" parent="CanvasLayer/Event/Result" unique_id=1052673133]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = 48.0
+offset_right = 106.0
+offset_bottom = 101.0
+grow_horizontal = 2
+grow_vertical = 2
+disabled = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Event/Result/NextDay" unique_id=218565726]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Next Day..."
+label_settings = SubResource("LabelSettings_u3v5j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="MorningFadeOutComplete" from="CanvasLayer/Morning" to="." method="OnMorningFadeOutComplete"]
+[connection signal="pressed" from="CanvasLayer/Morning/Continue" to="." method="OnContinueButtonPressed"]
+[connection signal="EventPromptFadeOutComplete" from="CanvasLayer/Event" to="." method="OnEventPromptFadeOutComplete"]
+[connection signal="EventResultFadeOutComplete" from="CanvasLayer/Event" to="." method="OnEventResultFadeOutComplete"]
+[connection signal="pressed" from="CanvasLayer/Event/Prompt/OptionA" to="." method="OnOptionA"]
+[connection signal="pressed" from="CanvasLayer/Event/Prompt/OptionB" to="." method="OnOptionB"]
+[connection signal="pressed" from="CanvasLayer/Event/Result/NextDay" to="." method="OnNextDayPressed"]

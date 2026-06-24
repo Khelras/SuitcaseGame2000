@@ -11,12 +11,46 @@ config_version=5
 [application]
 
 config/name="SuitcaseGame2000"
-config/features=PackedStringArray("4.6", "Forward Plus")
+run/main_scene="uid://dsqrwc1lev07j"
+config/features=PackedStringArray("4.6", "C#", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*uid://8nodkr60rkrt"
+BackgroundMusic="*uid://g2u45duvx6at"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/resizable=false
 
 [dotnet]
 
 project/assembly_name="SuitcaseGame2000"
+
+[file_customization]
+
+folder_colors={
+"res://assets/": "red",
+"res://fonts/": "orange",
+"res://scenes/": "yellow",
+"res://scripts/": "green",
+"res://sfx/": "teal"
+}
+
+[global_group]
+
+grid=""
+
+[input]
+
+Click={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(273, 11),"global_position":Vector2(282, 59),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
 
 [physics]
 
