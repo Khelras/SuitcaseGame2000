@@ -114,6 +114,7 @@ public partial class Item : Sprite2D
         currentCells = grid.GetCellsForItem(topLeft, ItemSizeByCell);
 
         bool isInsideGird = currentCells.Count > 0;
+
         //Play only when Inside the cell and cell has changed
         if (isInsideGird && currentCells[0] != currentCellPosition) {
             sfxInsideGrid.Play();
@@ -123,6 +124,7 @@ public partial class Item : Sprite2D
 
             currentCellPosition = Vector2I.Zero;
         }
+
         wasInsideGrid = isInsideGird;
         // Hide preview when outside the grid, show green/red when inside
         if (currentCells.Count == 0)

@@ -145,6 +145,7 @@ anchor_right = 19.825
 anchor_bottom = 17.025002
 offset_bottom = -6.1035156e-05
 label_settings = SubResource("LabelSettings_udy2x")
+autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="LeftBehindPanel" type="Panel" parent="UI" unique_id=1290022379]
@@ -242,14 +243,14 @@ ItemDescription = "Your favourite novel, gifted to you by your mum. Knowing how 
 Catagory = 1
 
 [node name="Food1" parent="ItemManager" unique_id=1996804444 groups=["items"] instance=ExtResource("2_uyvlg")]
-position = Vector2(939, 344)
+position = Vector2(956, 335)
 texture = ExtResource("15_w8tmu")
 ItemSizeByCell = Vector2i(1, 2)
 ItemName = "FoodCan"
 ItemDescription = "Your favourite novel, gifted to you by your mum. Knowing how much you liked the fantasy books she used to read you when you were younger, she gave this to you on your 8th birthday. You were enamored with it for the months afterwards. Looking at it makes you remember all those times you’d pretend to be the piper or the leviathan and play with your schoolmates or cousins."
 
 [node name="Food2" parent="ItemManager" unique_id=1562081748 groups=["items"] instance=ExtResource("2_uyvlg")]
-position = Vector2(939, 344)
+position = Vector2(909, 383)
 texture = ExtResource("16_rt7d0")
 ItemSizeByCell = Vector2i(1, 2)
 ItemName = "FoodCan"
@@ -351,7 +352,7 @@ ItemDescription = "When the well is dry, we learn the worth of
  awater."
 
 [node name="Wristwatch" parent="ItemManager" unique_id=40582580 groups=["items"] instance=ExtResource("2_uyvlg")]
-position = Vector2(966, 380)
+position = Vector2(1011, 391)
 texture = ExtResource("23_kloqn")
 ItemSizeByCell = Vector2i(1, 4)
 ItemName = "Wristwatch"
