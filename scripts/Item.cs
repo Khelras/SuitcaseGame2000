@@ -23,8 +23,8 @@ public enum ItemCatagory
 public partial class Item : Sprite2D
 {
     [ExportGroup("Item Configuration")]
-    [Export] public Vector2I GridCellSize { get; private set; }
     [Export] public Vector2I ItemSizeByCell { get; private set; }
+    public Vector2I GridCellSize { get; private set; } = new Vector2I(48, 48);
 
     private AudioStreamPlayer2D sfxGrab;
     private AudioStreamPlayer2D sfxDrop;
@@ -146,11 +146,21 @@ public partial class Item : Sprite2D
             PickUp();
             sfxGrab.Play();
         }
-        else {
+            
+    }
+
+    public override void _Input(InputEvent @event)
+    { 
+        if (@event is InputEventMouseButton mouseButton
+            && mouseButton.ButtonIndex == MouseButton.Left
+            && mouseButton.Pressed == false)
+        {
+            // Only Drop an Item if in a Dragging State
+            if (dragging == false) return;
+
             Drop();
             sfxDrop.Play();
         }
-            
     }
 
     private void PickUp()

@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bq2elwnpjopcb" path="res://scenes/Item.tscn" id="2_uyvlg"]
 [ext_resource type="Texture2D" uid="uid://vyjwadoa8lu8" path="res://assets/Pants_Asset_One.png" id="3_5ssih"]
 [ext_resource type="Script" uid="uid://bnunogho8o4nc" path="res://scripts/ItemHoverUI.cs" id="3_57w61"]
+[ext_resource type="Texture2D" uid="uid://4htcdxj5wkcb" path="res://assets/Box.png" id="3_gjqpf"]
 [ext_resource type="Texture2D" uid="uid://lwdl0y8rdqmc" path="res://assets/Photo_Asset_One.png" id="4_khfs5"]
 [ext_resource type="Texture2D" uid="uid://ctv2wt4c5nmn3" path="res://assets/Photo_Asset_Two.png" id="5_424rd"]
 [ext_resource type="Texture2D" uid="uid://dvrq2mruokkxo" path="res://assets/Pants_Asset_Two.png" id="6_sdhya"]
@@ -17,8 +18,12 @@
 [ext_resource type="Texture2D" uid="uid://drbadsl7g1trv" path="res://assets/Computer_Asset.png" id="11_lj880"]
 [ext_resource type="Texture2D" uid="uid://b4x1ii4uk0pbq" path="res://assets/Old Photo.png" id="12_378hi"]
 [ext_resource type="Texture2D" uid="uid://t3dktaphlnkq" path="res://assets/ShirtStack.png" id="13_tc2r1"]
+[ext_resource type="Texture2D" uid="uid://b10ofvyve71fm" path="res://assets/Food_Aseet_One.png" id="15_w8tmu"]
+[ext_resource type="Texture2D" uid="uid://85yv2nlw6vip" path="res://assets/Food_Aseet_Two.png" id="16_rt7d0"]
 [ext_resource type="Texture2D" uid="uid://dt6aqg82dve6f" path="res://assets/Socks_1.png" id="17_6pme8"]
+[ext_resource type="Texture2D" uid="uid://cty835wd6qebj" path="res://assets/Food_Aseet_three.png" id="17_rp7th"]
 [ext_resource type="Texture2D" uid="uid://b0wkvatu41bk0" path="res://assets/Socks_2.png" id="18_bdrqv"]
+[ext_resource type="Texture2D" uid="uid://cn8oq61wmthdg" path="res://assets/Food_Aseet_Four.png" id="18_gr7j1"]
 [ext_resource type="Texture2D" uid="uid://dd8nbjuane3js" path="res://assets/TowelRoll.png" id="19_m1g8v"]
 [ext_resource type="Texture2D" uid="uid://cm72spt2f07qm" path="res://assets/Shoes.png" id="20_gjqpf"]
 [ext_resource type="Texture2D" uid="uid://ck5jey8sjh7j" path="res://assets/Hoodie.png" id="21_15d33"]
@@ -52,17 +57,18 @@ LeftBehindDescription = NodePath("UI/LeftBehindPanel/LeftBehindDescription")
 position = Vector2(672, 368)
 texture = ExtResource("2_bdrqv")
 
-[node name="ItemManager" type="Node" parent="." unique_id=298203584]
-script = ExtResource("1_424rd")
+[node name="Box" type="Sprite2D" parent="." unique_id=406428382]
+position = Vector2(951, 346)
+texture = ExtResource("3_gjqpf")
 
 [node name="Suitcase" type="Sprite2D" parent="." unique_id=373507674]
-position = Vector2(348.5001, 343.75003)
+position = Vector2(348.5001, 355.75003)
 scale = Vector2(0.7119141, 0.67236334)
 texture = ExtResource("2_378hi")
 
 [node name="Grid" parent="." unique_id=446653954 instance=ExtResource("1_5ssih")]
 GridPosition = Vector2(60, 20)
-GridSize = Vector2i(18, 20)
+GridSize = Vector2i(12, 14)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1923099759]
 
@@ -118,10 +124,9 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.2
 anchor_top = 14.175
-anchor_right = 0.2
-anchor_bottom = 14.175
-offset_right = 40.0
-offset_bottom = 23.0
+anchor_right = 19.825
+anchor_bottom = 17.025002
+offset_bottom = -6.1035156e-05
 label_settings = SubResource("LabelSettings_udy2x")
 metadata/_edit_use_anchors_ = true
 
@@ -156,35 +161,36 @@ offset_bottom = 176.0
 layout_mode = 0
 offset_left = 597.0
 offset_top = 234.0
-offset_right = 637.0
-offset_bottom = 257.0
+offset_right = 1243.0
+offset_bottom = 425.0
+autowrap_mode = 2
 
-[node name="Pants1" parent="." unique_id=1332733576 groups=["items"] instance=ExtResource("2_uyvlg")]
-position = Vector2(772, 368)
-scale = Vector2(0.8269231, 0.66649044)
+[node name="ItemManager" type="Node" parent="." unique_id=298203584]
+script = ExtResource("1_424rd")
+
+[node name="Pants1" parent="ItemManager" unique_id=1332733576 groups=["items"] instance=ExtResource("2_uyvlg")]
+position = Vector2(865, 379)
+scale = Vector2(0.8269231, 0.79836154)
 texture = ExtResource("3_5ssih")
-GridCellSize = Vector2i(32, 32)
-ItemSizeByCell = Vector2i(3, 5)
+ItemSizeByCell = Vector2i(4, 6)
 ItemName = "Pants"
-ItemDescription = "Brown pants!!"
+ItemDescription = "Some reliable pants. Not brand new, slightly stained, but sturdy enough to last a couple of years."
 Catagory = 3
 
-[node name="Pants2" parent="." unique_id=932137228 groups=["items"] instance=ExtResource("2_uyvlg")]
-position = Vector2(871.99994, 356)
-scale = Vector2(0.91346157, 0.66543347)
+[node name="Pants2" parent="ItemManager" unique_id=932137228 groups=["items"] instance=ExtResource("2_uyvlg")]
+position = Vector2(1009, 342)
+scale = Vector2(0.91346157, 0.8337741)
 texture = ExtResource("6_sdhya")
-GridCellSize = Vector2i(32, 32)
-ItemSizeByCell = Vector2i(3, 5)
+ItemSizeByCell = Vector2i(4, 6)
 ItemName = "Pants"
 ItemDescription = "A long blue jean pants"
 Catagory = 3
 
-[node name="PhotoOfAuntieSuze" parent="." unique_id=93316893 groups=["items"] instance=ExtResource("2_uyvlg")]
-position = Vector2(1034, 272)
+[node name="PhotoOfAuntieSuze" parent="ItemManager" unique_id=93316893 groups=["items"] instance=ExtResource("2_uyvlg")]
+position = Vector2(910, 286)
 scale = Vector2(0.774, 0.774)
 texture = ExtResource("4_khfs5")
-GridCellSize = Vector2i(32, 32)
-ItemSizeByCell = Vector2i(3, 3)
+ItemSizeByCell = Vector2i(4, 4)
 ItemName = "photo of Auntie Suze"
 ItemDescription = "it's funny how in times like these, people
 fall out of your life. You remember how
@@ -195,12 +201,11 @@ you can't say, but it would mean the
 world to your dad if you took this with you.  "
 Catagory = 1
 
-[node name="PhotoBday" parent="." unique_id=1849605442 groups=["items"] instance=ExtResource("2_uyvlg")]
-position = Vector2(873, 562)
+[node name="PhotoBday" parent="ItemManager" unique_id=1849605442 groups=["items"] instance=ExtResource("2_uyvlg")]
+position = Vector2(865.00006, 485)
 scale = Vector2(0.79, 0.774)
 texture = ExtResource("5_424rd")
-GridCellSize = Vector2i(32, 32)
-ItemSizeByCell = Vector2i(3, 3)
+ItemSizeByCell = Vector2i(4, 4)
 ItemName = "BirthdayPhoto"
 ItemDescription = "Damn, this thing is old, a photo of you on
 your 3rd birthday. Mum has been looking
@@ -211,124 +216,137 @@ something you haven't seen in a while.
 The clueless look on your face makes
 you smirk a little. "
 
-[node name="Book" parent="." unique_id=1571515905 groups=["items"] instance=ExtResource("2_uyvlg")]
-position = Vector2(925, 431)
+[node name="Book" parent="ItemManager" unique_id=1571515905 groups=["items"] instance=ExtResource("2_uyvlg")]
+position = Vector2(939, 344)
 texture = ExtResource("8_57w61")
-GridCellSize = Vector2i(32, 32)
-ItemSizeByCell = Vector2i(4, 6)
+ItemSizeByCell = Vector2i(3, 4)
 ItemName = "Book"
-ItemDescription = "It's a book that your grandmother used to
-read for you. you can still remember your
-granmother voice on a rainy afternoon, 
-reading the book to you"
+ItemDescription = "Your favourite novel, gifted to you by your mum. Knowing how much you liked the fantasy books she used to read you when you were younger, she gave this to you on your 8th birthday. You were enamored with it for the months afterwards. Looking at it makes you remember all those times you’d pretend to be the piper or the leviathan and play with your schoolmates or cousins."
 Catagory = 1
 
-[node name="Stuffed Toy" parent="." unique_id=1845384214 groups=["items"] instance=ExtResource("2_uyvlg")]
-position = Vector2(1081, 290)
+[node name="Food1" parent="ItemManager" unique_id=1996804444 groups=["items"] instance=ExtResource("2_uyvlg")]
+position = Vector2(939, 344)
+texture = ExtResource("15_w8tmu")
+ItemSizeByCell = Vector2i(1, 2)
+ItemName = "FoodCan"
+ItemDescription = "Your favourite novel, gifted to you by your mum. Knowing how much you liked the fantasy books she used to read you when you were younger, she gave this to you on your 8th birthday. You were enamored with it for the months afterwards. Looking at it makes you remember all those times you’d pretend to be the piper or the leviathan and play with your schoolmates or cousins."
+
+[node name="Food2" parent="ItemManager" unique_id=1562081748 groups=["items"] instance=ExtResource("2_uyvlg")]
+position = Vector2(939, 344)
+texture = ExtResource("16_rt7d0")
+ItemSizeByCell = Vector2i(1, 2)
+ItemName = "FoodCan"
+ItemDescription = "Your favourite novel, gifted to you by your mum. Knowing how much you liked the fantasy books she used to read you when you were younger, she gave this to you on your 8th birthday. You were enamored with it for the months afterwards. Looking at it makes you remember all those times you’d pretend to be the piper or the leviathan and play with your schoolmates or cousins."
+
+[node name="Food3" parent="ItemManager" unique_id=1672243142 groups=["items"] instance=ExtResource("2_uyvlg")]
+position = Vector2(939, 344)
+texture = ExtResource("17_rp7th")
+ItemSizeByCell = Vector2i(3, 1)
+ItemName = "NutBar"
+ItemDescription = "Your favourite novel, gifted to you by your mum. Knowing how much you liked the fantasy books she used to read you when you were younger, she gave this to you on your 8th birthday. You were enamored with it for the months afterwards. Looking at it makes you remember all those times you’d pretend to be the piper or the leviathan and play with your schoolmates or cousins."
+
+[node name="Food4" parent="ItemManager" unique_id=1172749116 groups=["items"] instance=ExtResource("2_uyvlg")]
+position = Vector2(939, 344)
+texture = ExtResource("18_gr7j1")
+ItemSizeByCell = Vector2i(2, 2)
+ItemName = "InstantNoodles"
+ItemDescription = "Your favourite novel, gifted to you by your mum. Knowing how much you liked the fantasy books she used to read you when you were younger, she gave this to you on your 8th birthday. You were enamored with it for the months afterwards. Looking at it makes you remember all those times you’d pretend to be the piper or the leviathan and play with your schoolmates or cousins."
+
+[node name="Stuffed Toy" parent="ItemManager" unique_id=1845384214 groups=["items"] instance=ExtResource("2_uyvlg")]
+position = Vector2(1022, 339)
 texture = ExtResource("9_ceosh")
-GridCellSize = Vector2i(32, 32)
-ItemSizeByCell = Vector2i(4, 6)
+ItemSizeByCell = Vector2i(2, 5)
 ItemName = "Bunny stuff toy"
 ItemDescription = "A bunny stuff toy that reminds you days sleeping with it, you named it Miffy."
 Catagory = 2
 
-[node name="Laptop" parent="." unique_id=443807561 groups=["items"] instance=ExtResource("2_uyvlg")]
-position = Vector2(1034, 272)
+[node name="Laptop" parent="ItemManager" unique_id=443807561 groups=["items"] instance=ExtResource("2_uyvlg")]
+position = Vector2(971, 340)
 texture = ExtResource("11_lj880")
-GridCellSize = Vector2i(32, 32)
-ItemSizeByCell = Vector2i(6, 6)
+ItemSizeByCell = Vector2i(5, 5)
 ItemName = "Laptop"
-ItemDescription = "Really old laptop, used for doing work."
+ItemDescription = "Your trusty laptop and charger. You were lucky enough to be one of 20 students in your school to be given this by your school when you were 16. It runs slow, has a loud fan, and gave you so many opportunities that many others have missed out on. Hopefully it can keep doing that for a few years more."
 Catagory = 3
 
-[node name="Old Photo" parent="." unique_id=1758478466 groups=["items"] instance=ExtResource("2_uyvlg")]
-position = Vector2(1031, 361)
+[node name="Old Photo" parent="ItemManager" unique_id=1758478466 groups=["items"] instance=ExtResource("2_uyvlg")]
+position = Vector2(942, 328)
 scale = Vector2(0.774, 0.774)
 texture = ExtResource("12_378hi")
-GridCellSize = Vector2i(32, 32)
-ItemSizeByCell = Vector2i(2, 3)
+ItemSizeByCell = Vector2i(3, 5)
 ItemName = "Old Photo of Grandma and Granpa"
 ItemDescription = "A really old photo that captures om a
 sigle frame. your grandfather, grandmother,
 and a yong Mother."
 Catagory = 1
 
-[node name="Stack of Shirts" parent="." unique_id=802939691 groups=["items"] instance=ExtResource("2_uyvlg")]
-position = Vector2(1003, 431)
+[node name="Stack of Shirts" parent="ItemManager" unique_id=802939691 groups=["items"] instance=ExtResource("2_uyvlg")]
+position = Vector2(906, 291)
 texture = ExtResource("13_tc2r1")
-GridCellSize = Vector2i(32, 32)
-ItemSizeByCell = Vector2i(4, 4)
+ItemSizeByCell = Vector2i(4, 6)
 ItemName = "Shirt"
 ItemDescription = "Surprisingly, your shirt is still holding up."
 Catagory = 3
 
-[node name="LongSocks" parent="." unique_id=892456053 instance=ExtResource("2_uyvlg")]
-position = Vector2(980, 239)
+[node name="LongSocks" parent="ItemManager" unique_id=892456053 groups=["items"] instance=ExtResource("2_uyvlg")]
+position = Vector2(1083, 249)
 texture = ExtResource("17_6pme8")
-GridCellSize = Vector2i(32, 32)
-ItemSizeByCell = Vector2i(4, 4)
+ItemSizeByCell = Vector2i(2, 3)
 ItemName = "LongSocks"
 ItemDescription = "It's a long socks"
 
-[node name="ShortSocks" parent="." unique_id=989925073 instance=ExtResource("2_uyvlg")]
-position = Vector2(1060, 262)
+[node name="ShortSocks" parent="ItemManager" unique_id=989925073 groups=["items"] instance=ExtResource("2_uyvlg")]
+position = Vector2(1062, 426)
 texture = ExtResource("18_bdrqv")
-GridCellSize = Vector2i(32, 32)
-ItemSizeByCell = Vector2i(4, 4)
+ItemSizeByCell = Vector2i(2, 2)
 ItemName = "ShortSock"
 ItemDescription = "It's shortsock"
 Catagory = 3
 
-[node name="TowelRoll" parent="." unique_id=117194780 instance=ExtResource("2_uyvlg")]
-position = Vector2(563, 351)
+[node name="TowelRoll" parent="ItemManager" unique_id=117194780 groups=["items"] instance=ExtResource("2_uyvlg")]
+position = Vector2(860, 323)
 texture = ExtResource("19_m1g8v")
-GridCellSize = Vector2i(32, 32)
-ItemSizeByCell = Vector2i(4, 4)
+ItemSizeByCell = Vector2i(2, 5)
 ItemName = "TowelRoll"
 ItemDescription = "It's a towelroll"
 Catagory = 3
 
-[node name="Shoes" parent="." unique_id=577141223 instance=ExtResource("2_uyvlg")]
-position = Vector2(1003, 356)
+[node name="Shoes" parent="ItemManager" unique_id=577141223 groups=["items"] instance=ExtResource("2_uyvlg")]
+position = Vector2(964, 347)
 texture = ExtResource("20_gjqpf")
-GridCellSize = Vector2i(32, 32)
-ItemSizeByCell = Vector2i(4, 4)
+ItemSizeByCell = Vector2i(4, 6)
 ItemName = "Shoes"
 ItemDescription = "5 years shoes still standing!!!"
 
-[node name="Hoodie" parent="." unique_id=1752260247 instance=ExtResource("2_uyvlg")]
-position = Vector2(1014, 324)
+[node name="Hoodie" parent="ItemManager" unique_id=1752260247 groups=["items"] instance=ExtResource("2_uyvlg")]
+position = Vector2(937, 345)
 texture = ExtResource("21_15d33")
-GridCellSize = Vector2i(32, 32)
-ItemSizeByCell = Vector2i(4, 4)
+ItemSizeByCell = Vector2i(4, 6)
 ItemName = "Hoodie"
 ItemDescription = "Green hoodie"
 Catagory = 3
 
-[node name="WaterBottle" parent="." unique_id=942754071 instance=ExtResource("2_uyvlg")]
-position = Vector2(1031, 324)
+[node name="WaterBottle" parent="ItemManager" unique_id=942754071 groups=["items"] instance=ExtResource("2_uyvlg")]
+position = Vector2(896, 326)
 texture = ExtResource("22_vltkr")
-GridCellSize = Vector2i(32, 32)
-ItemSizeByCell = Vector2i(4, 4)
+ItemSizeByCell = Vector2i(2, 6)
 ItemName = "WaterBottle"
 ItemDescription = "When the well is dry, we learn the worth of
  awater."
 
-[node name="Wristwatch" parent="." unique_id=40582580 instance=ExtResource("2_uyvlg")]
-position = Vector2(1108, 368)
+[node name="Wristwatch" parent="ItemManager" unique_id=40582580 groups=["items"] instance=ExtResource("2_uyvlg")]
+position = Vector2(966, 380)
 texture = ExtResource("23_kloqn")
-GridCellSize = Vector2i(32, 32)
-ItemSizeByCell = Vector2i(4, 4)
+ItemSizeByCell = Vector2i(1, 4)
 ItemName = "Wristwatch"
-ItemDescription = "A cheap watch "
+ItemDescription = "Your dad’s old watch, which he gifted to you on your 18th birthday. He was always crazy about watches, had a whole box case full of them. He said this is the kind of thing you pass down to your kids until it eventually becomes a family heirloom of sorts. It’s not there yet, but maybe one day."
 Catagory = 3
 
-[node name="PocketWatch" parent="." unique_id=827017529 instance=ExtResource("2_uyvlg")]
-position = Vector2(797, 170)
+[node name="EngravedAmulet" parent="ItemManager" unique_id=827017529 groups=["items"] instance=ExtResource("2_uyvlg")]
+position = Vector2(994, 354)
 texture = ExtResource("25_m1g8v")
-GridCellSize = Vector2i(32, 32)
-ItemSizeByCell = Vector2i(3, 2)
-ItemName = "PocketWatch"
+ItemSizeByCell = Vector2i(1, 3)
+ItemName = "EngravedAmulet"
+ItemDescription = "A brass engraved amulet. Your family has had this since the 19th century if the stuff your grandpa told is to be believed. It's not worth much in terms of monetary value, but its sentimental value supersedes that fact."
 Catagory = 1
 
 [connection signal="pressed" from="UI/Button" to="." method="OnFinishedButtonPressed"]

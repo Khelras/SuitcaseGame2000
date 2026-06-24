@@ -181,28 +181,45 @@ public partial class PhaseTwoManager : Node
         }
         else if (day == 3) // Day 3
         {
-            // Take comfort in your pocket watch
-            bool hasPocketWatch = false;
+            // Take comfort in an item
+            bool hasComfortItem = false;
+            string comfortString = string.Empty;
             foreach (ItemID item in sentimentalItems)
             {
-                if (item.name.ToLower() == "pocket watch")
+                if (item.name.ToLower() == "engravedamulet")
                 {
-                    hasPocketWatch = true;
+                    hasComfortItem = true;
+                    comfortString = "You took comfort from your family's Engraved Amulet you brought with you...";
+                    break;
+                }
+
+                if (item.name.ToLower() == "wristwatch")
+                {
+                    hasComfortItem = true;
+                    comfortString = "You took comfort from your dad's old Wristwatch on your wrist...";
+                    break;
+                }
+
+                if (item.name.ToLower() == "book")
+                {
+                    hasComfortItem = true;
+                    comfortString = "You took comfort from the Novel your mom gave you on your 8th birthday...";
                     break;
                 }
             }
 
             // Player has the Pocket Watch
-            if (hasPocketWatch == true)
+            if (hasComfortItem == true)
             {
-                resultString = "You took comfort from the pocket watch you brought with you..." +
+                resultString = comfortString +
+                    "it reminds you of home..." +
                     "\n+Belonging";
 
                 healthBar.Value -= dailyDecrement / 2;
                 shelterBar.Value -= dailyDecrement / 2;
             }
             // Player DOES NOT have the Pocket Watch
-            else if (hasPocketWatch == false)
+            else if (hasComfortItem == false)
             {
                 resultString = "You had nothing... You quietly ignored the stranger..." +
                     "\n-Belonging";
